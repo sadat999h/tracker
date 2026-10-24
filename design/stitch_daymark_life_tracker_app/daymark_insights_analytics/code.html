@@ -1,0 +1,474 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#131315;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "error-container": "#93000a", "tertiary-fixed": "#e4e1e8", "primary-fixed-dim": "#ffb3ae", "on-primary-fixed": "#410004", "primary-fixed": "#ffdad7", "on-tertiary-fixed-variant": "#47464c", "on-error-container": "#ffdad6", "on-secondary": "#670314", "secondary": "#ffb3b2", "on-tertiary": "#303035", "outline": "#ad8885", "outline-variant": "#5d3f3d", "on-tertiary-fixed": "#1b1b20", "surface-variant": "#353437", "primary": "#ffb3ae", "secondary-container": "#8a212a", "primary-container": "#ff5352", "surface-container-high": "#2a2a2c", "tertiary-container": "#919096", "on-surface": "#e5e1e4", "secondary-fixed": "#ffdad9", "tertiary": "#c8c5cc", "inverse-on-surface": "#313032", "on-error": "#690005", "on-background": "#e5e1e4", "on-secondary-fixed": "#410008", "surface-tint": "#ffb3ae", "on-secondary-container": "#ff9e9d", "background": "#131315", "surface-container-low": "#1c1b1d", "on-primary-fixed-variant": "#930014", "on-primary": "#68000b", "surface": "#131315", "on-secondary-fixed-variant": "#871f28", "surface-container": "#201f21", "on-surface-variant": "#e7bdb9", "surface-dim": "#131315", "error": "#ffb4ab", "surface-container-lowest": "#0e0e10", "inverse-surface": "#e5e1e4", "tertiary-fixed-dim": "#c8c5cc", "surface-bright": "#39393b", "on-tertiary-container": "#29292e", "surface-container-highest": "#353437", "inverse-primary": "#c0001e", "on-primary-container": "#5c0009", "secondary-fixed-dim": "#ffb3b2" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "2rem", "space-lg": "1.5rem", "margin-mobile": "1rem", "space-sm": "0.5rem", "gutter": "0.75rem", "space-md": "1rem", "margin": "1rem", "space-xs": "0.25rem", "gutter-compact": "0.5rem" }, "fontFamily": { "display-lg": ["Geist"], "body-lg": ["Inter"], "body-sm": ["Inter"], "label-md": ["Geist"], "headline-lg": ["Inter"], "headline-sm": ["Inter"], "label-sm": ["Geist"], "body-md": ["Inter"], "headline-md": ["Inter"], "label-lg": ["Geist"], "display-md": ["Geist"] }, "fontSize": { "display-lg": ["40px", { "lineHeight": "44px", "letterSpacing": "-0.04em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0em", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }], "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-sm": ["16px", { "lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "-0.005em", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }], "display-md": ["32px", { "lineHeight": "36px", "letterSpacing": "-0.03em", "fontWeight": "600" }] } } } }</script></head><body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="flex justify-between items-center px-4 h-6 text-on-surface-variant font-label-sm text-label-sm select-none"><span class="font-medium tracking-tight">09:41</span><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">signal_cellular_4_bar</span><span class="material-symbols-outlined text-[14px]">wifi</span><span class="material-symbols-outlined text-[14px]">battery_full</span></div></div><div class="h-14 px-4 flex items-center justify-between"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary-container text-[20px]">radio_button_checked</span><span class="font-headline-sm text-headline-sm font-semibold tracking-tight uppercase text-on-surface">Insights</span></div><div class="flex items-center gap-2"><button class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-20 pb-24 bg-surface px-margin-mobile"><div class="flex flex-col w-full pb-6 space-y-4">
+<!-- Header & Description -->
+<div class="flex flex-col space-y-1">
+<div class="flex items-center justify-between">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-semibold tracking-tight text-on-surface">Telemetry Insights</h1>
+<p class="font-body-sm text-body-sm text-tertiary">Statistical correlations and trends</p>
+</div>
+<button class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-tertiary hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+<!-- Timeframe Segmented Control -->
+<div class="pt-2">
+<div class="grid grid-cols-4 p-1 bg-surface-container rounded-xl gap-1">
+<button class="py-2 rounded-lg font-label-md text-label-md transition-all text-tertiary hover:text-on-surface" onclick="switchTimeframe(this)">Daily</button>
+<button class="py-2 rounded-lg font-label-md text-label-md transition-all bg-primary-container text-on-primary-container font-semibold shadow-sm" onclick="switchTimeframe(this)">Weekly</button>
+<button class="py-2 rounded-lg font-label-md text-label-md transition-all text-tertiary hover:text-on-surface" onclick="switchTimeframe(this)">Monthly</button>
+<button class="py-2 rounded-lg font-label-md text-label-md transition-all text-tertiary hover:text-on-surface flex items-center justify-center gap-1" onclick="switchTimeframe(this)">
+<span>30D</span>
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Summary KPI Ribbon (2x2 Compact Grid) -->
+<div class="grid grid-cols-2 gap-2">
+<!-- Avg Sleep -->
+<div class="bg-surface-container p-3.5 rounded-xl flex flex-col justify-between space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-tertiary">Avg Sleep</span>
+<span class="material-symbols-outlined text-primary-container text-[18px]">bedtime</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg font-semibold text-on-surface">7h 18m</span>
+<span class="font-label-sm text-label-sm text-primary px-1.5 py-0.5 rounded bg-secondary-container/40 font-medium">+14m</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 88%;"></div>
+</div>
+</div>
+<!-- Avg Hydration -->
+<div class="bg-surface-container p-3.5 rounded-xl flex flex-col justify-between space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-tertiary">Hydration</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">water_drop</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg font-semibold text-on-surface">2.8L</span>
+<span class="font-label-sm text-label-sm text-tertiary px-1.5 py-0.5 rounded bg-surface-container-high font-medium">93%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 93%;"></div>
+</div>
+</div>
+<!-- Weekly Volume -->
+<div class="bg-surface-container p-3.5 rounded-xl flex flex-col justify-between space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-tertiary">Lift Volume</span>
+<span class="material-symbols-outlined text-primary-container text-[18px]">fitness_center</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg font-semibold text-on-surface">42.5t</span>
+<span class="font-label-sm text-label-sm text-primary px-1.5 py-0.5 rounded bg-secondary-container/40 font-medium">+8%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 76%;"></div>
+</div>
+</div>
+<!-- Deep Focus -->
+<div class="bg-surface-container p-3.5 rounded-xl flex flex-col justify-between space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-tertiary">Deep Focus</span>
+<span class="material-symbols-outlined text-tertiary-fixed text-[18px]">psychology</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg font-semibold text-on-surface">31.5h</span>
+<span class="font-label-sm text-label-sm text-tertiary-fixed px-1.5 py-0.5 rounded bg-surface-container-high font-medium">Goal 30h</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+<div class="bg-tertiary-fixed h-full rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+</div>
+<!-- Chart 1: Sleep Duration vs Quality -->
+<div class="bg-surface-container p-4 rounded-xl flex flex-col space-y-3">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Sleep Duration &amp; Target</h2>
+<p class="font-body-sm text-body-sm text-tertiary">7-day telemetry with 8h biological baseline</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-tertiary">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span> Actual
+        </span>
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-secondary">
+<span class="w-2 h-0.5 bg-secondary"></span> 8h Goal
+        </span>
+</div>
+</div>
+<!-- SVG Chart Container -->
+<div class="w-full h-44 relative pt-2">
+<svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 320 130">
+<!-- Horizontal Grid Lines -->
+<line stroke="#353437" stroke-dasharray="3,3" stroke-width="0.75" x1="0" x2="320" y1="20" y2="20"></line>
+<line stroke="#353437" stroke-dasharray="3,3" stroke-width="0.75" x1="0" x2="320" y1="60" y2="60"></line>
+<line stroke="#353437" stroke-width="0.75" x1="0" x2="320" y1="100" y2="100"></line>
+<!-- 8h Target Reference Line -->
+<line opacity="0.85" stroke="#ff5352" stroke-dasharray="4,4" stroke-width="1.5" x1="0" x2="320" y1="42" y2="42"></line>
+<text fill="#ffb3ae" font-family="Geist" font-size="9" text-anchor="end" x="318" y="38">8.0h Target</text>
+<!-- Bar columns for sleep quality score underneath -->
+<rect fill="#2a2a2c" height="35" rx="3" width="14" x="18" y="65"></rect>
+<rect fill="#2a2a2c" height="45" rx="3" width="14" x="63" y="55"></rect>
+<rect fill="#2a2a2c" height="28" rx="3" width="14" x="108" y="72"></rect>
+<rect fill="#2a2a2c" height="52" rx="3" width="14" x="153" y="48"></rect>
+<rect fill="#2a2a2c" height="60" rx="3" width="14" x="198" y="40"></rect>
+<rect fill="#2a2a2c" height="68" rx="3" width="14" x="243" y="32"></rect>
+<rect fill="#2a2a2c" height="55" rx="3" width="14" x="288" y="45"></rect>
+<!-- Sleep Line Path (Mon to Sun: 6.8h, 7.2h, 6.4h, 7.6h, 8.1h, 8.4h, 7.7h) -->
+<!-- Y-scale: 9h=15, 8h=42, 7h=68, 6h=95 -->
+<path d="M 25 73 L 70 63 L 115 84 L 160 53 L 205 39 L 250 31 L 295 50" fill="none" stroke="#ff5352" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<!-- Glow shadow effect on active path -->
+<path d="M 25 73 L 70 63 L 115 84 L 160 53 L 205 39 L 250 31 L 295 50" fill="none" opacity="0.15" stroke="#ff5352" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"></path>
+<!-- Interactive node dots with values -->
+<circle cx="25" cy="73" fill="#131315" r="3.5" stroke="#ff5352" stroke-width="2"></circle>
+<circle cx="70" cy="63" fill="#131315" r="3.5" stroke="#ff5352" stroke-width="2"></circle>
+<circle cx="115" cy="84" fill="#131315" r="3.5" stroke="#ff5352" stroke-width="2"></circle>
+<circle cx="160" cy="53" fill="#131315" r="3.5" stroke="#ff5352" stroke-width="2"></circle>
+<circle cx="205" cy="39" fill="#ff5352" r="4" stroke="#e5e1e4" stroke-width="1.5"></circle>
+<circle cx="250" cy="31" fill="#ff5352" r="4" stroke="#e5e1e4" stroke-width="1.5"></circle>
+<circle cx="295" cy="50" fill="#131315" r="3.5" stroke="#ff5352" stroke-width="2"></circle>
+<!-- Callout on peak day -->
+<text fill="#e5e1e4" font-family="Geist" font-size="10" font-weight="600" text-anchor="middle" x="250" y="22">8.4h</text>
+</svg>
+</div>
+<!-- Day labels -->
+<div class="grid grid-cols-7 text-center font-label-sm text-label-sm text-tertiary">
+<span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span class="text-primary font-bold">S</span><span class="text-primary font-bold">S</span>
+</div>
+</div>
+<!-- Chart 2: Weekly Work & Study Hours (Stacked Bar Chart) -->
+<div class="bg-surface-container p-4 rounded-xl flex flex-col space-y-3">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Cognitive Allocation</h2>
+<p class="font-body-sm text-body-sm text-tertiary">Work vs. study daily breakdown</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface">
+<span class="w-2.5 h-2.5 rounded-sm bg-primary-container"></span> Work
+        </span>
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-tertiary">
+<span class="w-2.5 h-2.5 rounded-sm bg-tertiary-container"></span> Study
+        </span>
+</div>
+</div>
+<!-- Stacked bars representation -->
+<div class="grid grid-cols-7 gap-2 pt-2 h-36 items-end">
+<!-- Mon (Work: 6h, Study: 2h) -->
+<div class="flex flex-col items-center gap-1.5 h-full justify-end">
+<span class="font-label-sm text-label-sm text-tertiary">8h</span>
+<div class="w-full flex flex-col-reverse rounded-lg overflow-hidden h-28 bg-surface-container-high">
+<div class="w-full bg-primary-container" style="height: 65%;"></div>
+<div class="w-full bg-tertiary-container" style="height: 25%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary">M</span>
+</div>
+<!-- Tue (Work: 7.5h, Study: 1.5h) -->
+<div class="flex flex-col items-center gap-1.5 h-full justify-end">
+<span class="font-label-sm text-label-sm text-tertiary">9h</span>
+<div class="w-full flex flex-col-reverse rounded-lg overflow-hidden h-28 bg-surface-container-high">
+<div class="w-full bg-primary-container" style="height: 75%;"></div>
+<div class="w-full bg-tertiary-container" style="height: 18%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary">T</span>
+</div>
+<!-- Wed (Work: 5.5h, Study: 3h) -->
+<div class="flex flex-col items-center gap-1.5 h-full justify-end">
+<span class="font-label-sm text-label-sm text-tertiary">8.5h</span>
+<div class="w-full flex flex-col-reverse rounded-lg overflow-hidden h-28 bg-surface-container-high">
+<div class="w-full bg-primary-container" style="height: 55%;"></div>
+<div class="w-full bg-tertiary-container" style="height: 35%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary">W</span>
+</div>
+<!-- Thu (Work: 8h, Study: 1h) -->
+<div class="flex flex-col items-center gap-1.5 h-full justify-end">
+<span class="font-label-sm text-label-sm text-tertiary">9h</span>
+<div class="w-full flex flex-col-reverse rounded-lg overflow-hidden h-28 bg-surface-container-high">
+<div class="w-full bg-primary-container" style="height: 80%;"></div>
+<div class="w-full bg-tertiary-container" style="height: 12%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary">T</span>
+</div>
+<!-- Fri (Work: 6.5h, Study: 2.5h) -->
+<div class="flex flex-col items-center gap-1.5 h-full justify-end">
+<span class="font-label-sm text-label-sm text-tertiary">9h</span>
+<div class="w-full flex flex-col-reverse rounded-lg overflow-hidden h-28 bg-surface-container-high">
+<div class="w-full bg-primary-container" style="height: 68%;"></div>
+<div class="w-full bg-tertiary-container" style="height: 26%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary">F</span>
+</div>
+<!-- Sat (Work: 1h, Study: 4.5h) -->
+<div class="flex flex-col items-center gap-1.5 h-full justify-end">
+<span class="font-label-sm text-label-sm text-tertiary">5.5h</span>
+<div class="w-full flex flex-col-reverse rounded-lg overflow-hidden h-28 bg-surface-container-high">
+<div class="w-full bg-primary-container" style="height: 15%;"></div>
+<div class="w-full bg-tertiary-container" style="height: 45%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">S</span>
+</div>
+<!-- Sun (Work: 0h, Study: 3.5h) -->
+<div class="flex flex-col items-center gap-1.5 h-full justify-end">
+<span class="font-label-sm text-label-sm text-tertiary">3.5h</span>
+<div class="w-full flex flex-col-reverse rounded-lg overflow-hidden h-28 bg-surface-container-high">
+<div class="w-full bg-primary-container" style="height: 0%;"></div>
+<div class="w-full bg-tertiary-container" style="height: 38%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">S</span>
+</div>
+</div>
+</div>
+<!-- Chart 3: Lifting Volume & Workout Frequency progression -->
+<div class="bg-surface-container p-4 rounded-xl flex flex-col space-y-3">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Progressive Overload</h2>
+<p class="font-body-sm text-body-sm text-tertiary">4-Week mechanical tonnage &amp; frequency</p>
+</div>
+<div class="px-2 py-1 bg-surface-container-high rounded-md flex items-center gap-1">
+<span class="material-symbols-outlined text-primary-container text-[14px]">trending_up</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">+18.2% Total</span>
+</div>
+</div>
+<div class="w-full h-32 relative pt-2">
+<svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 320 90">
+<defs>
+<linearGradient id="volumeOverloadGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#ff5352" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#ff5352" stop-opacity="0.0"></stop>
+</linearGradient>
+</defs>
+<!-- Area fill under the overload trendline -->
+<path d="M 20 75 L 100 58 L 180 42 L 260 22 L 300 15 L 300 85 L 20 85 Z" fill="url(#volumeOverloadGrad)"></path>
+<!-- Grid baseline -->
+<line stroke="#353437" stroke-width="0.75" x1="0" x2="320" y1="85" y2="85"></line>
+<!-- Stepped Overload Trendline -->
+<path d="M 20 75 L 100 58 L 180 42 L 260 22 L 300 15" fill="none" stroke="#ff5352" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Week data points -->
+<circle cx="20" cy="75" fill="#131315" r="4" stroke="#ff5352" stroke-width="2"></circle>
+<circle cx="100" cy="58" fill="#131315" r="4" stroke="#ff5352" stroke-width="2"></circle>
+<circle cx="180" cy="42" fill="#131315" r="4" stroke="#ff5352" stroke-width="2"></circle>
+<circle cx="260" cy="22" fill="#ff5352" r="4" stroke="#e5e1e4" stroke-width="1.5"></circle>
+<circle cx="300" cy="15" fill="#ff5352" r="4" stroke="#e5e1e4" stroke-width="2"></circle>
+<!-- Numerical Tonnage Badges -->
+<text fill="#c8c5cc" font-family="Geist" font-size="9" text-anchor="middle" x="20" y="66">36.0t</text>
+<text fill="#c8c5cc" font-family="Geist" font-size="9" text-anchor="middle" x="100" y="49">38.2t</text>
+<text fill="#c8c5cc" font-family="Geist" font-size="9" text-anchor="middle" x="180" y="33">40.1t</text>
+<text fill="#ffdad7" font-family="Geist" font-size="9" font-weight="600" text-anchor="middle" x="260" y="13">42.5t</text>
+</svg>
+</div>
+<div class="grid grid-cols-4 pt-1 border-t-0 text-center font-label-sm text-label-sm text-tertiary">
+<div><span class="text-on-surface font-medium">Wk 1</span> · 3 sessions</div>
+<div><span class="text-on-surface font-medium">Wk 2</span> · 4 sessions</div>
+<div><span class="text-on-surface font-medium">Wk 3</span> · 4 sessions</div>
+<div><span class="text-primary font-bold">Wk 4</span> · 5 sessions</div>
+</div>
+</div>
+<!-- Chart 4: Time Allocation Breakdown -->
+<div class="bg-surface-container p-4 rounded-xl flex flex-col space-y-3">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Time Allocation</h2>
+<p class="font-body-sm text-body-sm text-tertiary">24-hour baseline active distribution</p>
+</div>
+<span class="font-label-md text-label-md text-tertiary">168 hrs logged</span>
+</div>
+<!-- Proportional Stacked Segment Progress Bar -->
+<div class="flex flex-col space-y-2 pt-1">
+<div class="w-full h-4 rounded-full overflow-hidden flex bg-surface-container-high p-0.5 gap-0.5">
+<div class="bg-primary-container h-full rounded-l-full transition-all" style="width: 42%;" title="Work 42%"></div>
+<div class="bg-secondary h-full transition-all" style="width: 24%;" title="Study 24%"></div>
+<div class="bg-tertiary-fixed h-full transition-all" style="width: 23%;" title="Sleep 23%"></div>
+<div class="bg-secondary-container h-full rounded-r-full transition-all" style="width: 11%;" title="Fitness 11%"></div>
+</div>
+<!-- Compact Legend Grid -->
+<div class="grid grid-cols-2 gap-2 pt-2">
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="font-label-md text-label-md text-on-surface">Work</span>
+</div>
+<span class="font-label-md text-label-md font-semibold text-on-surface">42%</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md text-on-surface">Study</span>
+</div>
+<span class="font-label-md text-label-md font-semibold text-on-surface">24%</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-fixed"></span>
+<span class="font-label-md text-label-md text-on-surface">Sleep</span>
+</div>
+<span class="font-label-md text-label-md font-semibold text-on-surface">23%</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-container"></span>
+<span class="font-label-md text-label-md text-on-surface">Fitness</span>
+</div>
+<span class="font-label-md text-label-md font-semibold text-on-surface">11%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Correlation Explorer (Scientific & Delightful Data Exploration) -->
+<div class="bg-surface-container p-4 rounded-xl flex flex-col space-y-3.5 relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-[18px]">biotech</span>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Correlation Explorer</h2>
+</div>
+<p class="font-body-sm text-body-sm text-tertiary mt-0.5">Sleep Duration vs Deep Focus Time</p>
+</div>
+<div class="px-2 py-1 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+        r = +0.74
+      </div>
+</div>
+<!-- Telemetry Scatter Dual Trend Mini Visual -->
+<div class="w-full bg-surface-container-low p-3 rounded-xl flex flex-col space-y-2">
+<div class="flex items-center justify-between text-tertiary font-label-sm text-label-sm">
+<span>Scatter Density (60 Records)</span>
+<span class="text-primary font-medium">Strong Positive</span>
+</div>
+<div class="w-full h-24 relative">
+<svg class="w-full h-full overflow-visible" viewBox="0 0 300 80">
+<!-- Scatter distribution dots -->
+<circle cx="30" cy="65" fill="#5d3f3d" opacity="0.6" r="2.5"></circle>
+<circle cx="45" cy="58" fill="#5d3f3d" opacity="0.7" r="2.5"></circle>
+<circle cx="65" cy="62" fill="#5d3f3d" opacity="0.6" r="2.5"></circle>
+<circle cx="85" cy="52" fill="#8a212a" opacity="0.8" r="2.5"></circle>
+<circle cx="110" cy="46" fill="#8a212a" opacity="0.8" r="3"></circle>
+<circle cx="130" cy="48" fill="#8a212a" opacity="0.7" r="2.5"></circle>
+<circle cx="150" cy="40" fill="#ff5352" opacity="0.9" r="3"></circle>
+<circle cx="175" cy="35" fill="#ff5352" opacity="0.9" r="3"></circle>
+<circle cx="195" cy="32" fill="#ff5352" opacity="0.9" r="3"></circle>
+<circle cx="215" cy="28" fill="#ff5352" r="3.5"></circle>
+<circle cx="235" cy="24" fill="#ff5352" r="3.5"></circle>
+<circle cx="260" cy="18" fill="#ffb3ae" r="3.5"></circle>
+<circle cx="280" cy="14" fill="#ffb3ae" r="4"></circle>
+<!-- Regression line -->
+<line stroke="#ff5352" stroke-linecap="round" stroke-width="2" x1="20" x2="285" y1="70" y2="12"></line>
+</svg>
+</div>
+<!-- Core Finding Callout -->
+<div class="p-2.5 rounded-lg bg-surface-container text-on-surface">
+<p class="font-body-md text-body-md leading-snug">
+          On days with <span class="font-semibold text-primary">&gt;7.5h sleep</span>, deep focus duration increases by an average of <span class="font-semibold text-on-surface">42 minutes</span>.
+        </p>
+</div>
+</div>
+<!-- Scientific Disclaimer Badge -->
+<div class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-high/60">
+<span class="material-symbols-outlined text-tertiary text-[18px]">info</span>
+<p class="font-label-sm text-label-sm text-tertiary">
+        Correlation derived from 60 logged records. Not medical causation.
+      </p>
+</div>
+</div>
+<!-- Raw Dataset Spreadsheet & Table Toggle -->
+<div class="bg-surface-container rounded-xl overflow-hidden">
+<button class="w-full p-4 flex items-center justify-between text-left hover:bg-surface-container-high/50 transition-colors" onclick="toggleRawData()">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[20px]">table_chart</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">View Raw Dataset (28 Days)</h3>
+<p class="font-body-sm text-body-sm text-tertiary">Telemetry log matrix for export and review</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-tertiary text-[22px] transition-transform duration-200" id="expandChevron">expand_more</span>
+</button>
+<!-- Collapsible Table Content -->
+<div class="hidden px-4 pb-4 transition-all" id="rawDataTable">
+<div class="overflow-x-auto w-full rounded-lg bg-surface-container-low">
+<table class="w-full text-left font-label-md text-label-md border-collapse">
+<thead>
+<tr class="bg-surface-container-high text-tertiary border-b-0">
+<th class="py-2.5 px-3 font-semibold">Date</th>
+<th class="py-2.5 px-3 font-semibold">Sleep</th>
+<th class="py-2.5 px-3 font-semibold">Focus</th>
+<th class="py-2.5 px-3 font-semibold">Hydration</th>
+<th class="py-2.5 px-3 font-semibold">Volume</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface">
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2 px-3 font-medium text-tertiary">Oct 26</td>
+<td class="py-2 px-3 text-primary-container font-semibold">8.4h</td>
+<td class="py-2 px-3">5.2h</td>
+<td class="py-2 px-3">3.1L</td>
+<td class="py-2 px-3">12.4t</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2 px-3 font-medium text-tertiary">Oct 25</td>
+<td class="py-2 px-3">7.8h</td>
+<td class="py-2 px-3">4.6h</td>
+<td class="py-2 px-3">2.8L</td>
+<td class="py-2 px-3">9.8t</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2 px-3 font-medium text-tertiary">Oct 24</td>
+<td class="py-2 px-3">6.4h</td>
+<td class="py-2 px-3 text-tertiary">3.1h</td>
+<td class="py-2 px-3">2.4L</td>
+<td class="py-2 px-3">--</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2 px-3 font-medium text-tertiary">Oct 23</td>
+<td class="py-2 px-3 text-primary-container font-semibold">8.1h</td>
+<td class="py-2 px-3">5.0h</td>
+<td class="py-2 px-3">3.0L</td>
+<td class="py-2 px-3">11.2t</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2 px-3 font-medium text-tertiary">Oct 22</td>
+<td class="py-2 px-3">7.2h</td>
+<td class="py-2 px-3">4.2h</td>
+<td class="py-2 px-3">2.7L</td>
+<td class="py-2 px-3">9.1t</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-3 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-tertiary">Showing 5 of 28 rows</span>
+<button class="font-label-md text-label-md text-primary hover:text-on-surface transition-colors flex items-center gap-1">
+<span>Export CSV</span>
+<span class="material-symbols-outlined text-[16px]">download</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function switchTimeframe(element) {
+    const parent = element.parentElement;
+    const buttons = parent.querySelectorAll('button');
+    buttons.forEach(btn => {
+      btn.className = "py-2 rounded-lg font-label-md text-label-md transition-all text-tertiary hover:text-on-surface";
+    });
+    element.className = "py-2 rounded-lg font-label-md text-label-md transition-all bg-primary-container text-on-primary-container font-semibold shadow-sm";
+  }
+
+  function toggleRawData() {
+    const table = document.getElementById('rawDataTable');
+    const chevron = document.getElementById('expandChevron');
+    if (table.classList.contains('hidden')) {
+      table.classList.remove('hidden');
+      chevron.style.transform = 'rotate(180deg)';
+    } else {
+      table.classList.add('hidden');
+      chevron.style.transform = 'rotate(0deg)';
+    }
+  }
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 bg-surface-container-low/90 backdrop-blur-xl pb-safe shadow-[0_-1px_12px_rgba(0,0,0,0.4)]" data-active-classes="text-primary-container font-semibold"><div class="flex items-center justify-around h-16 px-1"><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 text-tertiary-container hover:text-on-surface transition-colors" data-path="home" href="#"><span class="material-symbols-outlined text-[20px]">home</span><span class="font-label-sm text-label-sm mt-0.5">Home</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 text-tertiary-container hover:text-on-surface transition-colors" data-path="track" href="#"><span class="material-symbols-outlined text-[20px]">adjust</span><span class="font-label-sm text-label-sm mt-0.5">Track</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 transition-colors text-primary-container font-semibold" data-path="insights" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="font-label-sm text-label-sm mt-0.5">Insights</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 text-tertiary-container hover:text-on-surface transition-colors" data-path="assistant" href="#"><span class="material-symbols-outlined text-[20px]">auto_awesome</span><span class="font-label-sm text-label-sm mt-0.5">Assistant</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 text-tertiary-container hover:text-on-surface transition-colors" data-path="profile" href="#"><span class="material-symbols-outlined text-[20px]">person</span><span class="font-label-sm text-label-sm mt-0.5">Profile</span></a></div><div class="w-full flex justify-center pb-2 pt-1"><div class="w-28 h-1 rounded-full bg-surface-variant"></div></div></nav></body></html>

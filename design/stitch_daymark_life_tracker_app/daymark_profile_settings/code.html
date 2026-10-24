@@ -1,0 +1,479 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#131315;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "error-container": "#93000a", "tertiary-fixed": "#e4e1e8", "primary-fixed-dim": "#ffb3ae", "on-primary-fixed": "#410004", "primary-fixed": "#ffdad7", "on-tertiary-fixed-variant": "#47464c", "on-error-container": "#ffdad6", "on-secondary": "#670314", "secondary": "#ffb3b2", "on-tertiary": "#303035", "outline": "#ad8885", "outline-variant": "#5d3f3d", "on-tertiary-fixed": "#1b1b20", "surface-variant": "#353437", "primary": "#ffb3ae", "secondary-container": "#8a212a", "primary-container": "#ff5352", "surface-container-high": "#2a2a2c", "tertiary-container": "#919096", "on-surface": "#e5e1e4", "secondary-fixed": "#ffdad9", "tertiary": "#c8c5cc", "inverse-on-surface": "#313032", "on-error": "#690005", "on-background": "#e5e1e4", "on-secondary-fixed": "#410008", "surface-tint": "#ffb3ae", "on-secondary-container": "#ff9e9d", "background": "#131315", "surface-container-low": "#1c1b1d", "on-primary-fixed-variant": "#930014", "on-primary": "#68000b", "surface": "#131315", "on-secondary-fixed-variant": "#871f28", "surface-container": "#201f21", "on-surface-variant": "#e7bdb9", "surface-dim": "#131315", "error": "#ffb4ab", "surface-container-lowest": "#0e0e10", "inverse-surface": "#e5e1e4", "tertiary-fixed-dim": "#c8c5cc", "surface-bright": "#39393b", "on-tertiary-container": "#29292e", "surface-container-highest": "#353437", "inverse-primary": "#c0001e", "on-primary-container": "#5c0009", "secondary-fixed-dim": "#ffb3b2" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "2rem", "space-lg": "1.5rem", "margin-mobile": "1rem", "space-sm": "0.5rem", "gutter": "0.75rem", "space-md": "1rem", "margin": "1rem", "space-xs": "0.25rem", "gutter-compact": "0.5rem" }, "fontFamily": { "display-lg": ["Geist"], "body-lg": ["Inter"], "body-sm": ["Inter"], "label-md": ["Geist"], "headline-lg": ["Inter"], "headline-sm": ["Inter"], "label-sm": ["Geist"], "body-md": ["Inter"], "headline-md": ["Inter"], "label-lg": ["Geist"], "display-md": ["Geist"] }, "fontSize": { "display-lg": ["40px", { "lineHeight": "44px", "letterSpacing": "-0.04em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0em", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }], "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-sm": ["16px", { "lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "-0.005em", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }], "display-md": ["32px", { "lineHeight": "36px", "letterSpacing": "-0.03em", "fontWeight": "600" }] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="flex justify-between items-center px-4 h-6 text-on-surface-variant font-label-sm text-label-sm select-none"><span class="font-medium tracking-tight">09:41</span><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">signal_cellular_4_bar</span><span class="material-symbols-outlined text-[14px]">wifi</span><span class="material-symbols-outlined text-[14px]">battery_full</span></div></div><div class="h-14 px-4 flex items-center justify-between"><div class="flex items-center gap-2.5"><div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant/40 flex items-center justify-center overflow-hidden shrink-0"><span class="material-symbols-outlined text-primary text-[20px]">account_circle</span></div><span class="font-headline-sm text-headline-sm font-semibold tracking-tight uppercase text-on-surface">Profile</span></div><div class="flex items-center gap-1"><button aria-label="Notifications" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span></button><button aria-label="Settings" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">settings</span></button></div></div></header><main class="flex-1 flex flex-col relative w-full pt-20 pb-24 bg-surface px-margin-mobile"><div class="flex flex-col w-full pb-10 space-y-4">
+<!-- 1. USER PROFILE TELEMETRY DOSSIER -->
+<section class="bg-surface-container-low rounded-xl p-4 flex flex-col gap-3 relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<!-- Avatar Squircle with Telemetry Live Indicator -->
+<div class="relative w-14 h-14 rounded-xl bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[32px] text-tertiary">person</span>
+<!-- Active status ping -->
+<span class="absolute -top-1 -right-1 flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary-container"></span>
+</span>
+<!-- Edit badge overlay -->
+<button aria-label="Edit Profile Photo" class="absolute -bottom-1 -right-1 w-5 h-5 rounded-md bg-surface-container-high text-on-surface flex items-center justify-center hover:bg-surface-bright transition-colors" type="button">
+<span class="material-symbols-outlined text-[12px]">edit</span>
+</button>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<h1 class="font-headline-sm text-headline-sm text-on-surface truncate">Alex Vance</h1>
+<span class="px-1.5 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm uppercase tracking-wider shrink-0">PRO ENGINE</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary-container mt-0.5 tracking-tight font-mono">ID #8842-DELTA // BIOMETRIC LOCK V2</span>
+</div>
+</div>
+<button class="h-8 px-3 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-bright font-label-md text-label-md transition-colors flex items-center gap-1.5 shrink-0" type="button">
+<span class="material-symbols-outlined text-[15px]">tune</span>
+<span>Edit</span>
+</button>
+</div>
+<!-- Telemetric Coefficient Grid -->
+<div class="grid grid-cols-3 gap-2 pt-1">
+<div class="bg-surface-container rounded-lg p-2.5 flex flex-col justify-between">
+<div class="flex items-center gap-1 text-tertiary-container">
+<span class="material-symbols-outlined text-[14px] text-primary-container">local_fire_department</span>
+<span class="font-label-sm text-label-sm">Streak</span>
+</div>
+<div class="mt-1">
+<span class="font-display-md text-headline-md text-on-surface font-semibold">94</span>
+<span class="font-label-sm text-label-sm text-tertiary-container">days</span>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-2.5 flex flex-col justify-between">
+<div class="flex items-center gap-1 text-tertiary-container">
+<span class="material-symbols-outlined text-[14px] text-primary">analytics</span>
+<span class="font-label-sm text-label-sm">Logs</span>
+</div>
+<div class="mt-1">
+<span class="font-display-md text-headline-md text-on-surface font-semibold">1,280</span>
+<span class="font-label-sm text-label-sm text-tertiary-container">pts</span>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-2.5 flex flex-col justify-between">
+<div class="flex items-center gap-1 text-tertiary-container">
+<span class="material-symbols-outlined text-[14px] text-primary-container">verified</span>
+<span class="font-label-sm text-label-sm">Adherence</span>
+</div>
+<div class="mt-1">
+<span class="font-display-md text-headline-md text-on-surface font-semibold">99.4%</span>
+<span class="font-label-sm text-label-sm text-tertiary-container">coeff</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. PERSONAL GOALS & TARGET CALIBRATION -->
+<section class="bg-surface-container-low rounded-xl p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[18px]">track_changes</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Target Calibration</h2>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary-container font-mono">Q2 VECTORS</span>
+</div>
+<!-- Health & Physical Subgroup -->
+<div class="flex flex-col gap-2.5 pt-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-tertiary">Physical Baseline</span>
+<!-- Hydration Target -->
+<div class="bg-surface-container rounded-lg p-3 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">water_drop</span>
+<span class="font-body-md text-body-md text-on-surface">Hydration Reservoir Target</span>
+</div>
+<span class="font-label-md text-label-md font-mono text-primary font-semibold">3,000 ml</span>
+</div>
+<div class="grid grid-cols-3 gap-1.5 pt-0.5">
+<button class="py-1.5 rounded-md font-label-sm text-label-sm bg-surface-container-high text-tertiary hover:text-on-surface transition-colors" type="button">2,500 ml</button>
+<button class="py-1.5 rounded-md font-label-sm text-label-sm bg-primary-container text-on-primary font-semibold" type="button">3,000 ml</button>
+<button class="py-1.5 rounded-md font-label-sm text-label-sm bg-surface-container-high text-tertiary hover:text-on-surface transition-colors" type="button">3,500 ml</button>
+</div>
+</div>
+<!-- Sleep Duration Stepper Representation -->
+<div class="bg-surface-container rounded-lg p-3 flex items-center justify-between">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-tertiary">bedtime</span>
+<span class="font-body-md text-body-md text-on-surface">Target Sleep Window</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary-container mt-0.5">REM &amp; Deep Restorative Baseline</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high rounded-md p-1">
+<button aria-label="Decrease sleep target" class="w-7 h-7 rounded bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-bright transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="font-label-md text-label-md font-mono text-on-surface font-semibold px-1">8.0h</span>
+<button aria-label="Increase sleep target" class="w-7 h-7 rounded bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-bright transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+<!-- Lifting Volume & Body Mass Dual Grid -->
+<div class="grid grid-cols-2 gap-2">
+<div class="bg-surface-container rounded-lg p-3 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-tertiary-container">Weekly Volume</span>
+<span class="material-symbols-outlined text-[16px] text-primary">fitness_center</span>
+</div>
+<div class="mt-2 flex items-baseline justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold font-mono">45,000</span>
+<span class="font-label-sm text-label-sm text-tertiary">kg</span>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-3 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-tertiary-container">Target Mass</span>
+<span class="font-label-sm text-label-sm text-primary-container font-mono">-1.4 kg</span>
+</div>
+<div class="mt-2 flex items-baseline justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold font-mono">75.0</span>
+<span class="font-label-sm text-label-sm text-tertiary">curr 76.4</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Cognitive & Productivity Subgroup -->
+<div class="flex flex-col gap-2.5 pt-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-tertiary">Cognitive Telemetry</span>
+<div class="bg-surface-container rounded-lg p-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary-container">psychology</span>
+<div>
+<span class="font-body-md text-body-md text-on-surface block">Daily Deep Work Engine</span>
+<span class="font-label-sm text-label-sm text-tertiary-container">Focus Session: 45m work / 10m recovery</span>
+</div>
+</div>
+<span class="font-label-md text-label-md font-mono text-on-surface font-semibold bg-surface-container-high px-2 py-1 rounded">6.0 hrs</span>
+</div>
+<div class="bg-surface-container rounded-lg p-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-tertiary">menu_book</span>
+<div>
+<span class="font-body-md text-body-md text-on-surface block">Research &amp; Protocol Study</span>
+<span class="font-label-sm text-label-sm text-tertiary-container">Active literature intake</span>
+</div>
+</div>
+<span class="font-label-md text-label-md font-mono text-on-surface font-semibold bg-surface-container-high px-2 py-1 rounded">3.0 hrs</span>
+</div>
+</div>
+</section>
+<!-- 3. UNIT & MEASUREMENT SYSTEM -->
+<section class="bg-surface-container-low rounded-xl p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[18px]">straighten</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Telemetry Units</h2>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary-container">ISO STANDARDS</span>
+</div>
+<div class="flex flex-col gap-2.5">
+<!-- Body Weight & Load -->
+<div class="bg-surface-container rounded-lg p-2.5 flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface">Weight &amp; Barbell Load</span>
+<div class="flex bg-surface-container-high p-0.5 rounded-lg text-label-sm font-label-sm">
+<button class="px-2.5 py-1 rounded-md bg-surface-container text-on-surface font-semibold" type="button">Metric (kg)</button>
+<button class="px-2.5 py-1 rounded-md text-tertiary hover:text-on-surface transition-colors" type="button">Imperial (lbs)</button>
+</div>
+</div>
+<!-- Liquid Volume -->
+<div class="bg-surface-container rounded-lg p-2.5 flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface">Liquid Hydration</span>
+<div class="flex bg-surface-container-high p-0.5 rounded-lg text-label-sm font-label-sm">
+<button class="px-2.5 py-1 rounded-md bg-surface-container text-on-surface font-semibold" type="button">Milliliters (ml)</button>
+<button class="px-2.5 py-1 rounded-md text-tertiary hover:text-on-surface transition-colors" type="button">Fluid Oz (fl oz)</button>
+</div>
+</div>
+<!-- Distance Cadence -->
+<div class="bg-surface-container rounded-lg p-2.5 flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface">Distance &amp; Cadence</span>
+<div class="flex bg-surface-container-high p-0.5 rounded-lg text-label-sm font-label-sm">
+<button class="px-2.5 py-1 rounded-md bg-surface-container text-on-surface font-semibold" type="button">Kilometers (km)</button>
+<button class="px-2.5 py-1 rounded-md text-tertiary hover:text-on-surface transition-colors" type="button">Miles (mi)</button>
+</div>
+</div>
+<!-- Time Format -->
+<div class="bg-surface-container rounded-lg p-2.5 flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface">Circadian Dial Clock</span>
+<div class="flex bg-surface-container-high p-0.5 rounded-lg text-label-sm font-label-sm">
+<button class="px-2.5 py-1 rounded-md bg-surface-container text-on-surface font-semibold" type="button">24-Hour (14:30)</button>
+<button class="px-2.5 py-1 rounded-md text-tertiary hover:text-on-surface transition-colors" type="button">12-Hour (2:30 PM)</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. CUSTOM TRACKING CATEGORIES & MODULARITY -->
+<section class="bg-surface-container-low rounded-xl p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[18px]">view_quilt</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Active Telemetry Modules</h2>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary-container font-mono">5 ACTIVE</span>
+</div>
+<div class="flex flex-col gap-2">
+<!-- Item 1 -->
+<div class="bg-surface-container rounded-lg p-3 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-tertiary cursor-grab text-[18px]">drag_indicator</span>
+<span class="material-symbols-outlined text-primary-container text-[18px]">water_full</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Hydration Reservoir</span>
+</div>
+<button aria-label="Toggle Hydration Reservoir" class="w-10 h-6 rounded-full bg-primary-container p-0.5 flex items-center justify-end transition-colors" type="button">
+<div class="w-5 h-5 rounded-full bg-on-primary"></div>
+</button>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container rounded-lg p-3 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-tertiary cursor-grab text-[18px]">drag_indicator</span>
+<span class="material-symbols-outlined text-primary-container text-[18px]">pill</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Medication Telemetry</span>
+</div>
+<button aria-label="Toggle Medication Telemetry" class="w-10 h-6 rounded-full bg-primary-container p-0.5 flex items-center justify-end transition-colors" type="button">
+<div class="w-5 h-5 rounded-full bg-on-primary"></div>
+</button>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface-container rounded-lg p-3 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-tertiary cursor-grab text-[18px]">drag_indicator</span>
+<span class="material-symbols-outlined text-primary-container text-[18px]">fitness_center</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Barbell Hypertrophy</span>
+</div>
+<button aria-label="Toggle Barbell Hypertrophy" class="w-10 h-6 rounded-full bg-primary-container p-0.5 flex items-center justify-end transition-colors" type="button">
+<div class="w-5 h-5 rounded-full bg-on-primary"></div>
+</button>
+</div>
+<!-- Item 4 -->
+<div class="bg-surface-container rounded-lg p-3 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-tertiary cursor-grab text-[18px]">drag_indicator</span>
+<span class="material-symbols-outlined text-primary-container text-[18px]">memory</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Deep Work Engine</span>
+</div>
+<button aria-label="Toggle Deep Work Engine" class="w-10 h-6 rounded-full bg-primary-container p-0.5 flex items-center justify-end transition-colors" type="button">
+<div class="w-5 h-5 rounded-full bg-on-primary"></div>
+</button>
+</div>
+<!-- Item 5 -->
+<div class="bg-surface-container rounded-lg p-3 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-tertiary cursor-grab text-[18px]">drag_indicator</span>
+<span class="material-symbols-outlined text-primary-container text-[18px]">ecg_heart</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Subjective Autonomic State</span>
+</div>
+<button aria-label="Toggle Subjective Autonomic State" class="w-10 h-6 rounded-full bg-primary-container p-0.5 flex items-center justify-end transition-colors" type="button">
+<div class="w-5 h-5 rounded-full bg-on-primary"></div>
+</button>
+</div>
+</div>
+<button class="w-full py-2.5 px-3 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md flex items-center justify-center gap-1.5 transition-colors mt-1" type="button">
+<span class="material-symbols-outlined text-primary-container text-[18px]">add_circle</span>
+<span>Add Custom Telemetry Parameter</span>
+</button>
+</section>
+<!-- 5. NOTIFICATION & CIRCADIAN ARCHITECTURE -->
+<section class="bg-surface-container-low rounded-xl p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[18px]">notifications_active</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Circadian Quiet Shield</h2>
+</div>
+<span class="font-label-sm text-label-sm text-primary-container font-mono">ACTIVE</span>
+</div>
+<div class="bg-surface-container rounded-lg p-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface">Quiet Hours Window</span>
+<span class="font-label-sm text-label-sm text-tertiary-container mt-0.5">Dampens all non-critical notifications</span>
+</div>
+<span class="font-label-md text-label-md font-mono text-on-surface bg-surface-container-high px-2 py-1 rounded">22:30 – 06:30</span>
+</div>
+<div class="bg-surface-container rounded-lg p-3 flex items-center justify-between">
+<div class="flex flex-col pr-2">
+<span class="font-body-md text-body-md text-on-surface">Medication Priority Override</span>
+<span class="font-label-sm text-label-sm text-tertiary-container mt-0.5">Penetrates circadian quiet lock for strict protocols</span>
+</div>
+<button aria-label="Toggle Medication Priority Override" class="w-10 h-6 rounded-full bg-primary-container p-0.5 flex items-center justify-end shrink-0" type="button">
+<div class="w-5 h-5 rounded-full bg-on-primary"></div>
+</button>
+</div>
+<div class="bg-surface-container rounded-lg p-3 flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface">Haptic Profile</span>
+<div class="flex bg-surface-container-high p-0.5 rounded-lg text-label-sm font-label-sm">
+<button class="px-2.5 py-1 rounded-md bg-surface-container text-primary font-semibold" type="button">Crisp</button>
+<button class="px-2.5 py-1 rounded-md text-tertiary hover:text-on-surface transition-colors" type="button">Minimal</button>
+<button class="px-2.5 py-1 rounded-md text-tertiary hover:text-on-surface transition-colors" type="button">Silent</button>
+</div>
+</div>
+<a class="font-label-md text-label-md text-primary flex items-center justify-between pt-1 hover:text-on-surface transition-colors" href="#">
+<span>Open Notification Center &amp; Schedules</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</section>
+<!-- 6. AI LIFE ASSISTANT PREFERENCES -->
+<section class="bg-surface-container-low rounded-xl p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[18px]">neurology</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">AI Assistant Preferences</h2>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary-container font-mono">SYNAPSE V4</span>
+</div>
+<div class="bg-surface-container rounded-lg p-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface">Grounded Context Scope</span>
+<span class="font-label-sm text-label-sm text-tertiary-container mt-0.5">Historical trend ingestion window</span>
+</div>
+<span class="font-label-md text-label-md font-mono text-primary font-semibold">90-Day Rolling</span>
+</div>
+<div class="bg-surface-container rounded-lg p-3 flex items-center justify-between">
+<div class="flex flex-col pr-2">
+<span class="font-body-md text-body-md text-on-surface">Sensitive Masking Guard</span>
+<span class="font-label-sm text-label-sm text-tertiary-container mt-0.5">Anonymizes vitals &amp; pharmaceuticals before LLM synthesis</span>
+</div>
+<button aria-label="Toggle Sensitive Masking Guard" class="w-10 h-6 rounded-full bg-primary-container p-0.5 flex items-center justify-end shrink-0" type="button">
+<div class="w-5 h-5 rounded-full bg-on-primary"></div>
+</button>
+</div>
+<div class="bg-surface-container rounded-lg p-3 flex items-center justify-between">
+<div class="flex flex-col pr-2">
+<span class="font-body-md text-body-md text-on-surface">Weekly Synthesis Dispatch</span>
+<span class="font-label-sm text-label-sm text-tertiary-container mt-0.5">Automated briefing delivery Sundays at 20:00</span>
+</div>
+<button aria-label="Toggle Weekly Synthesis Dispatch" class="w-10 h-6 rounded-full bg-primary-container p-0.5 flex items-center justify-end shrink-0" type="button">
+<div class="w-5 h-5 rounded-full bg-on-primary"></div>
+</button>
+</div>
+<div class="bg-surface-container rounded-lg p-2.5 flex flex-col gap-2">
+<span class="font-body-md text-body-md text-on-surface">Assistant Delivery Tone</span>
+<div class="grid grid-cols-3 gap-1 bg-surface-container-high p-0.5 rounded-lg text-label-sm font-label-sm">
+<button class="py-1 rounded-md bg-surface-container text-on-surface font-semibold text-center" type="button">Scientific</button>
+<button class="py-1 rounded-md text-tertiary hover:text-on-surface transition-colors text-center" type="button">Balanced</button>
+<button class="py-1 rounded-md text-tertiary hover:text-on-surface transition-colors text-center" type="button">Motivational</button>
+</div>
+</div>
+</section>
+<!-- 7. PRIVACY, SECURITY & DATA SOVEREIGNTY -->
+<section class="bg-surface-container-low rounded-xl p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[18px]">encrypted</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Data Sovereignty &amp; Vault</h2>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary-container font-mono">ZERO-KNOWLEDGE</span>
+</div>
+<div class="bg-surface-container rounded-lg p-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface">Biometric App Enclave</span>
+<span class="font-label-sm text-label-sm text-tertiary-container mt-0.5">Hardware Face ID / Touch Unlock</span>
+</div>
+<button aria-label="Toggle Biometric Lock" class="w-10 h-6 rounded-full bg-primary-container p-0.5 flex items-center justify-end shrink-0" type="button">
+<div class="w-5 h-5 rounded-full bg-on-primary"></div>
+</button>
+</div>
+<div class="bg-surface-container rounded-lg p-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-tertiary">key</span>
+<div>
+<span class="font-body-md text-body-md text-on-surface block">On-Device Storage</span>
+<span class="font-label-sm text-label-sm text-tertiary-container">AES-256 GCM authenticated cypher</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-mono font-semibold">ENCRYPTED</span>
+</div>
+<div class="flex flex-col gap-2 pt-1">
+<button class="w-full py-2.5 px-3 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-between transition-colors" type="button">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-tertiary">download</span>
+<span>Export Full Telemetry Archive (JSON / CSV)</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-tertiary-container">chevron_right</span>
+</button>
+<button class="w-full py-2.5 px-3 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-between transition-colors" type="button">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-tertiary">cleaning_services</span>
+<span>Clear Cached Offline Signals</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary-container font-mono">14.2 MB</span>
+</button>
+<button class="w-full py-2.5 px-3 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md flex items-center justify-between transition-colors" type="button">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">delete_forever</span>
+<span>Purge Account &amp; Erase All Records</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-primary">warning</span>
+</button>
+</div>
+</section>
+<!-- 8. THEME & VISUAL TELEMETRY ENGINE -->
+<section class="bg-surface-container-low rounded-xl p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[18px]">palette</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Visual Engine</h2>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary-container font-mono">OLED SPECTRA</span>
+</div>
+<!-- Tonal Matrix -->
+<div class="bg-surface-container rounded-lg p-3 flex flex-col gap-2">
+<span class="font-body-md text-body-md text-on-surface">Base Luminance</span>
+<div class="grid grid-cols-3 gap-1.5">
+<button class="py-2 rounded-lg bg-surface-container-highest text-on-surface font-label-sm text-label-sm font-semibold flex items-center justify-center gap-1.5" type="button">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-dim"></span>
+<span>Obsidian</span>
+</button>
+<button class="py-2 rounded-lg bg-surface-container-high text-tertiary font-label-sm text-label-sm flex items-center justify-center gap-1.5 hover:text-on-surface transition-colors" type="button">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-variant"></span>
+<span>Charcoal</span>
+</button>
+<button class="py-2 rounded-lg bg-surface-container-high text-tertiary font-label-sm text-label-sm flex items-center justify-center gap-1.5 hover:text-on-surface transition-colors" type="button">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-container-lowest"></span>
+<span>Pure OLED</span>
+</button>
+</div>
+</div>
+<!-- Accent Selector -->
+<div class="bg-surface-container rounded-lg p-3 flex flex-col gap-2">
+<span class="font-body-md text-body-md text-on-surface">Telemetry Signal Accent</span>
+<div class="flex items-center gap-3 pt-0.5">
+<button aria-label="Crimson Red Accent" class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[16px] text-on-primary">check</span>
+</button>
+<button aria-label="Cyber Vermilion Accent" class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center hover:opacity-80 transition-opacity" type="button">
+</button>
+<button aria-label="Steel Monochrome Accent" class="w-8 h-8 rounded-full bg-tertiary flex items-center justify-center hover:opacity-80 transition-opacity" type="button">
+</button>
+</div>
+</div>
+<!-- App Icon Asset Presentation -->
+<div class="bg-surface-container rounded-lg p-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-lg overflow-hidden shrink-0 bg-surface-container-highest">
+<img alt="DAYMARK Radar Mark" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1VQrjC8FbwFLl9QsZR56u74Xn0eKX8uT3mbN5PyKjxu2sdQx_4irI4UbA-hNduAyW9nzV_5H5aeCDhX0on0F73DR9MA0QMrAspuMGSwP4xogHlyt3SkiU3pX5ifDzX0RH6MuBVIazTxO-OLeLl8CKYC7vHBSu8VaCVdPsxPSbcqOxp4u7Nuxb3AxWwadi1Lg-k2D0N9uZwbvg0VT0rjwCMyt5p86P_38zgnlDzzscr809A0w8sLSKyX8FYb">
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">DAYMARK Telemetry Dial</span>
+<span class="font-label-sm text-label-sm text-tertiary-container">Default Active Telemetry Icon</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-mono font-semibold">SELECTED</span>
+</div>
+</section>
+<!-- 9. APP META & SYSTEM TELEMETRY FOOTER -->
+<footer class="pt-2 flex flex-col items-center justify-center gap-1.5 text-center">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-tertiary-container font-mono tracking-tight">DAYMARK v2.8.4 (Build 4190) // CORE ENGINE</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary font-mono">Telemetry Coherence 99.8% // All Nodes Functional</span>
+</footer>
+</div></main><nav class="fixed bottom-0 inset-x-0 z-50 bg-surface-container-low/90 backdrop-blur-xl pb-safe shadow-[0_-1px_12px_rgba(0,0,0,0.4)]" data-active-classes="text-primary-container font-semibold"><div class="flex items-center justify-around h-16 px-1"><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 text-tertiary-container hover:text-on-surface transition-colors" data-path="daily-dashboard" href="#"><span class="material-symbols-outlined text-[20px]">home</span><span class="font-label-sm text-label-sm mt-0.5">Home</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 text-tertiary-container hover:text-on-surface transition-colors" data-path="track" href="#"><span class="material-symbols-outlined text-[20px]">adjust</span><span class="font-label-sm text-label-sm mt-0.5">Track</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 text-tertiary-container hover:text-on-surface transition-colors" data-path="insights" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="font-label-sm text-label-sm mt-0.5">Insights</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 text-tertiary-container hover:text-on-surface transition-colors" data-path="assistant" href="#"><span class="material-symbols-outlined text-[20px]">auto_awesome</span><span class="font-label-sm text-label-sm mt-0.5">Assistant</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] py-1 transition-colors text-primary-container font-semibold" data-path="profile" href="#"><span class="material-symbols-outlined text-[20px]">person</span><span class="font-label-sm text-label-sm mt-0.5">Profile</span></a></div><div class="w-full flex justify-center pb-2 pt-1"><div class="w-28 h-1 rounded-full bg-surface-variant"></div></div></nav></body></html>

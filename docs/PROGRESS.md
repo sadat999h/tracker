@@ -1,0 +1,6 @@
+# DAYMARK Progress
+
+## Phase 9 — Polish, Release & Preview
+- **Automated tests**: validated pure logic modules (units, dates, scoring, fitness, stats, ai context builder) via Vitest.
+- **Expo Go preview**: prepared startup commands so the app can be run immediately on your physical phone or simulator.
+- **Progress documentation**: finalized progress tracking.
