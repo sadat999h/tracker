@@ -8,10 +8,16 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 void SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [interLoaded] = useInterFonts({ Inter_400Regular, Inter_600SemiBold });
+  const [interLoaded, fontError] = useInterFonts({ Inter_400Regular, Inter_600SemiBold });
 
-  useEffect(() => { if (interLoaded) void SplashScreen.hideAsync(); }, [interLoaded]);
-  if (!interLoaded) return null;
+  useEffect(() => {
+    if (!interLoaded && !fontError) return;
+    if (fontError) console.error('Failed to load Inter fonts:', fontError);
+    void SplashScreen.hideAsync().catch((error: unknown) => {
+      console.error('Failed to hide splash screen:', error);
+    });
+  }, [interLoaded, fontError]);
+  if (!interLoaded && !fontError) return null;
 
   return <SafeAreaProvider><Stack screenOptions={{ headerShown: false, animation: 'fade' }}><Stack.Screen name="(tabs)" /><Stack.Screen name="components" options={{ presentation: 'modal' }} /></Stack></SafeAreaProvider>;
 }

@@ -1,6 +1,7 @@
 # DAYMARK Progress
 
 ## Phase 9 — Polish, Release & Preview
+- [x] Prevent a font-loading failure from leaving the installed app stuck on its splash screen.
 - [x] Align Android Kotlin with the Compose compiler requirement and validate the EAS APK build configuration.
 - [x] Add EAS internal Android APK build profile and validate its configuration.
 - **Automated tests**: validated pure logic modules (units, dates, scoring, fitness, stats, ai context builder) via Vitest.
