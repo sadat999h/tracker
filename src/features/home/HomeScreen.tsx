@@ -5,7 +5,7 @@ import { AppCard, Button, Checkbox, Chip, MetricTile, ProgressBar, Ring, Telemet
 import { colors, cardBorder, radii, spacing, typography } from '@/theme/tokens';
 import { useHealthDashboard } from '@/features/health/hooks/useHealthDashboard';
 import { calculateConsistency } from '@/lib/scoring';
-import { logWaterEntry, toggleHabitLog } from './data/healthRepository';
+import { logWaterEntry, toggleHabitLog } from '@/features/health/data/healthRepository';
 
 export function HomeScreen() {
   const router = useRouter();

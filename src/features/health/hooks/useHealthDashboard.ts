@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { initializeDefaults } from '@/db/migrate';
-import { getHabitsForToday, getMedications, getProfile, getWaterToday } from './healthRepository';
+import { getHabitsForToday, getMedications, getProfile, getWaterToday } from '@/features/health/data/healthRepository';
 
 export function useHealthDashboard() {
   const [loading, setLoading] = useState(true);
