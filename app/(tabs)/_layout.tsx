@@ -6,7 +6,7 @@ const tabs = [
   { name: 'home', title: 'Home', icon: 'home-outline' as const, active: 'home' as const },
   { name: 'track', title: 'Track', icon: 'record-circle-outline' as const, active: 'record-circle' as const },
   { name: 'insights', title: 'Insights', icon: 'chart-bar' as const, active: 'chart-bar' as const },
-  { name: 'assistant', title: 'Assistant', icon: 'creation-outline' as const, active: 'creation' as const },
+  { name: 'assistant', title: 'Assistant', icon: 'creation' as const, active: 'creation' as const },
   { name: 'profile', title: 'Profile', icon: 'account-outline' as const, active: 'account' as const },
 ] as const;
 
