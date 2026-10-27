@@ -1,27 +1,28 @@
-import { eq } from 'drizzle-orm';
-import { db } from '@/db/client';
-import { exercises, focusSessions, sets, workoutExercises, workouts } from '@/db/schema';
+import { isNull } from 'drizzle-orm';
+import { getDb } from '@/db/client';
+import { exercises, focusSessions } from '@/db/schema';
+import { uuid } from '@/lib/ids';
 
 export async function getExercises() {
-  const list = await db.select().from(exercises);
-  if (list.length === 0) {
-    // Seed default exercises if empty
-    await db.insert(exercises).values([
-      { id: 'ex_bench', name: 'Bench Press (Barbell)', muscleGroup: 'Chest' },
-      { id: 'ex_squat', name: 'Squat (Barbell)', muscleGroup: 'Legs' },
-      { id: 'ex_row', name: 'Barbell Row', muscleGroup: 'Back' },
-    ]).onConflictDoNothing();
-    return await db.select().from(exercises);
-  }
+  const db = getDb();
+  const list = await db.select().from(exercises).where(isNull(exercises.deletedAt));
   return list;
 }
 
-export async function logFocusSession(category: string, plannedMin: number, actualMin: number, diverts: number, deliverable: string) {
+export async function logFocusSession(
+  category: string,
+  plannedMin: number,
+  actualMin: number,
+  diverts: number,
+  deliverable: string,
+) {
+  const db = getDb();
+  const now = Date.now();
   await db.insert(focusSessions).values({
-    id: `focus_${Date.now()}`,
+    id: uuid(),
     category,
-    startedAt: new Date(Date.now() - actualMin * 60000),
-    endedAt: new Date(),
+    startedAt: new Date(now - actualMin * 60_000),
+    endedAt: new Date(now),
     plannedMin,
     actualMin,
     diverts,

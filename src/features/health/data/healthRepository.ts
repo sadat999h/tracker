@@ -1,32 +1,55 @@
-import { eq } from 'drizzle-orm';
-import { db } from '@/db/client';
-import { entries, habitLogs, habits, medicationLogs, medications, profiles, settings, sleepLogs, targets } from '@/db/schema';
+import { eq, isNull } from 'drizzle-orm';
+import { getDb } from '@/db/client';
+import {
+  entries,
+  habitLogs,
+  habits,
+  medicationLogs,
+  medications,
+  profiles,
+  settings,
+  targets,
+} from '@/db/schema';
 import { getLocalDateString } from '@/lib/dates';
+import { uuid } from '@/lib/ids';
 
 export async function getProfile() {
-  const [profile] = await db.select().from(profiles).limit(1);
+  const db = getDb();
+  const [profile] = await db
+    .select()
+    .from(profiles)
+    .where(isNull(profiles.deletedAt))
+    .limit(1);
   return profile ?? null;
 }
 
-export async function saveProfile(name: string) {
-  const id = 'user_profile_1';
-  const existing = await getProfile();
-  if (existing) {
-    await db.update(profiles).set({ name }).where(eq(profiles.id, id));
-  } else {
-    await db.insert(profiles).values({ id, name, createdAt: new Date() });
-  }
-}
-
-export async function getWaterToday(day = getLocalDateString()) {
-  const allEntries = await db.select().from(entries).where(eq(entries.day, day));
-  return allEntries.reduce((sum, e) => sum + (e.valueNum ?? 0), 0);
+export async function getWaterToday(day = getLocalDateString()): Promise<number> {
+  const db = getDb();
+  // Only sum entries for the water metric (md_water), not all entries for the day
+  const rows = await db
+    .select({ valueNum: entries.valueNum })
+    .from(entries)
+    .where(eq(entries.metricId, 'md_water'))
+    // also filter by day
+    ;
+  const dayRows = rows.filter((r) => {
+    // We need to re-query with day filter — do it properly
+    return true; // placeholder; real filter below
+  });
+  // Re-query properly with both conditions
+  const { and } = await import('drizzle-orm');
+  const dayEntries = await db
+    .select({ valueNum: entries.valueNum })
+    .from(entries)
+    .where(and(eq(entries.metricId, 'md_water'), eq(entries.day, day), isNull(entries.deletedAt)));
+  return dayEntries.reduce((sum, e) => sum + (e.valueNum ?? 0), 0);
 }
 
 export async function logWaterEntry(amountMl: number, day = getLocalDateString()) {
+  const db = getDb();
   await db.insert(entries).values({
-    id: `water_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
-    metricId: 'hydration',
+    id: uuid(),
+    metricId: 'md_water',
     ts: new Date(),
     day,
     valueNum: amountMl,
@@ -35,8 +58,16 @@ export async function logWaterEntry(amountMl: number, day = getLocalDateString()
 }
 
 export async function getHabitsForToday(day = getLocalDateString()) {
-  const activeHabits = await db.select().from(habits).where(eq(habits.active, true));
-  const logs = await db.select().from(habitLogs).where(eq(habitLogs.day, day));
+  const db = getDb();
+  const { and } = await import('drizzle-orm');
+  const activeHabits = await db
+    .select()
+    .from(habits)
+    .where(and(eq(habits.active, true), isNull(habits.deletedAt)));
+  const logs = await db
+    .select()
+    .from(habitLogs)
+    .where(and(eq(habitLogs.day, day), isNull(habitLogs.deletedAt)));
   const logMap = new Map(logs.map((l) => [l.habitId, l]));
 
   return activeHabits.map((habit) => ({
@@ -45,15 +76,27 @@ export async function getHabitsForToday(day = getLocalDateString()) {
   }));
 }
 
-export async function toggleHabitLog(habitId: string, done: boolean, valueNum?: number, day = getLocalDateString()) {
-  const logs = await db.select().from(habitLogs).where(eq(habitLogs.habitId, habitId));
-  const existing = logs.find((l) => l.day === day);
+export async function toggleHabitLog(
+  habitId: string,
+  done: boolean,
+  valueNum?: number,
+  day = getLocalDateString(),
+) {
+  const db = getDb();
+  const { and } = await import('drizzle-orm');
+  const [existing] = await db
+    .select()
+    .from(habitLogs)
+    .where(and(eq(habitLogs.habitId, habitId), eq(habitLogs.day, day), isNull(habitLogs.deletedAt)));
 
   if (existing) {
-    await db.update(habitLogs).set({ done, valueNum: valueNum ?? existing.valueNum }).where(eq(habitLogs.id, existing.id));
+    await db
+      .update(habitLogs)
+      .set({ done, valueNum: valueNum ?? existing.valueNum })
+      .where(eq(habitLogs.id, existing.id));
   } else {
     await db.insert(habitLogs).values({
-      id: `habitlog_${Date.now()}`,
+      id: uuid(),
       habitId,
       day,
       done,
@@ -64,12 +107,22 @@ export async function toggleHabitLog(habitId: string, done: boolean, valueNum?: 
 }
 
 export async function getMedications() {
-  return await db.select().from(medications).where(eq(medications.active, true));
+  const db = getDb();
+  const { and } = await import('drizzle-orm');
+  return db
+    .select()
+    .from(medications)
+    .where(and(eq(medications.active, true), isNull(medications.deletedAt)));
 }
 
-export async function logMedicationDose(medId: string, status: 'taken' | 'skipped', scheduledFor = new Date()) {
+export async function logMedicationDose(
+  medId: string,
+  status: 'taken' | 'skipped',
+  scheduledFor = new Date(),
+) {
+  const db = getDb();
   await db.insert(medicationLogs).values({
-    id: `medlog_${Date.now()}`,
+    id: uuid(),
     medId,
     scheduledFor,
     status,
