@@ -35,3 +35,4 @@
 
 ## Phase protocol
 Before every phase, append a concise build checklist to `docs/PROGRESS.md`. Build reusable primitives before screens, verify with typecheck/lint/tests and visual inspection, commit each logical unit, then report what was built, how to run it, deviations, risks, and next phase. Stop for user review before proceeding.
+Read docs/MASTER_BRIEF.md first

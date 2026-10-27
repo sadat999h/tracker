@@ -1,0 +1,16 @@
+// Migration journal for drizzle-orm/expo-sqlite/migrator.
+// Each entry in `entries` corresponds to one .sql file in this directory.
+// The `tag` must match the filename without the .sql extension.
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1730000000000,
+      "tag": "0000_phase_zero",
+      "breakpoints": false
+    }
+  ]
+}
