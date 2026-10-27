@@ -21,7 +21,8 @@ export default function WelcomeScreen() {
         <View style={styles.actions}>
           <Pressable
             style={({ pressed }) => [styles.primaryButton, pressed && styles.pressed]}
-            onPress={() => router.push('/(onboarding)/profile')}
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            onPress={() => router.push('/(onboarding)/profile' as any)}
             accessibilityRole="button"
             accessibilityLabel="Get started with Daymark"
           >
@@ -37,35 +38,18 @@ export default function WelcomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.canvas,
-  },
+  container: { flex: 1, backgroundColor: colors.canvas },
   content: {
     flex: 1,
     paddingHorizontal: spacing.lg,
     justifyContent: 'space-between',
     paddingBottom: spacing.lg,
   },
-  hero: {
-    flex: 1,
-    justifyContent: 'center',
-    gap: spacing.md,
-  },
-  overline: {
-    color: colors.signal,
-    letterSpacing: 2,
-  },
-  heading: {
-    color: colors.ink,
-  },
-  body: {
-    color: colors.muted,
-    lineHeight: 22,
-  },
-  actions: {
-    gap: spacing.sm,
-  },
+  hero: { flex: 1, justifyContent: 'center', gap: spacing.md },
+  overline: { color: colors.signal, letterSpacing: 2 },
+  heading: { color: colors.ink },
+  body: { color: colors.muted, lineHeight: 22 },
+  actions: { gap: spacing.sm },
   primaryButton: {
     minHeight: 52,
     borderRadius: radii.control,
@@ -73,11 +57,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  pressed: {
-    opacity: 0.8,
-  },
-  hint: {
-    color: colors.muted,
-    textAlign: 'center',
-  },
+  pressed: { opacity: 0.8 },
+  hint: { color: colors.muted, textAlign: 'center' },
 });

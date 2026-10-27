@@ -11,6 +11,7 @@ type BootstrapState =
 
 interface Props {
   children: ReactNode;
+  onReady?: () => void;
 }
 
 /**
@@ -19,16 +20,19 @@ interface Props {
  *   2. Migrations run
  *   3. Default data is seeded
  *
- * On error, shows a recovery screen with Retry + diagnostic export.
+ * On error shows a recovery screen with Retry.
  * Never shows an infinite spinner — always resolves to ready or error.
  */
-export function Bootstrap({ children }: Props) {
+export function Bootstrap({ children, onReady }: Props) {
   const [state, setState] = useState<BootstrapState>({ status: 'loading' });
 
   const run = () => {
     setState({ status: 'loading' });
     runBootstrap()
-      .then(() => setState({ status: 'ready' }))
+      .then(() => {
+        setState({ status: 'ready' });
+        onReady?.();
+      })
       .catch((err: unknown) => {
         const message =
           err instanceof Error ? err.message : 'Unknown error during database init';
@@ -64,7 +68,7 @@ export function Bootstrap({ children }: Props) {
         </Pressable>
         <Text style={[typography.bodySm, styles.hint]}>
           If this keeps happening, you may need to reinstall the app.{'\n'}
-          Your data cannot be recovered without the original device.
+          Your data cannot be recovered without the original device's keystore.
         </Text>
       </View>
     );

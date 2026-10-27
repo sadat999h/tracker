@@ -6,24 +6,17 @@ import { colors, spacing, typography } from '@/theme/tokens';
 
 /**
  * Assistant tab — Phase 0 skeleton.
- * AI features are off by default and require the user to enable them in
- * Settings → AI Assistant. No network calls are made until the user
- * explicitly opts in, adds a Gemini key, and accepts the privacy notice.
- * Full implementation in Phase 6.
+ * AI features require opt-in in Settings → AI Assistant.
+ * No network calls until the user enables AI and adds a key.
  */
 export default function AssistantScreen() {
   const router = useRouter();
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
-      <ScrollView
-        contentContainerStyle={styles.scroll}
-        showsVerticalScrollIndicator={false}
-      >
+      <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
-          <Text style={[typography.headlineLg, { color: colors.ink }]}>
-            AI Assistant
-          </Text>
+          <Text style={[typography.headlineLg, { color: colors.ink }]}>AI Assistant</Text>
           <Text style={[typography.bodyMd, { color: colors.muted, marginTop: 2 }]}>
             Optional · uses Google Gemini
           </Text>
@@ -32,18 +25,17 @@ export default function AssistantScreen() {
         <AppCard style={styles.card}>
           <TelemetryLabel>AI features are off</TelemetryLabel>
           <Text style={[typography.bodyMd, { color: colors.ink, marginTop: spacing.sm }]}>
-            Everything in Daymark works without AI. The assistant is an
-            optional feature that analyses your data using Google Gemini.
+            Everything in Daymark works without AI. The assistant is optional and
+            sends your aggregated daily numbers to Google Gemini when you ask it
+            a question.
           </Text>
           <Text style={[typography.bodyMd, { color: colors.muted, marginTop: spacing.sm }]}>
-            When you enable it and ask a question, aggregated daily numbers
-            from your chosen window are sent to Google. Medication names and
-            doses are masked by default. Raw notes are never sent unless you
-            opt in.
+            Medication names and doses are masked by default. Raw notes are never
+            sent unless you opt in.
           </Text>
           <Text style={[typography.bodySm, { color: colors.muted, marginTop: spacing.sm }]}>
             Free-tier Gemini API data may be used by Google to improve its
-            products. Check Google AI Studio's terms for details.
+            products. Check Google AI Studio's terms for the current policy.
           </Text>
         </AppCard>
 
@@ -58,7 +50,8 @@ export default function AssistantScreen() {
             <Button
               label="Open AI Settings"
               variant="secondary"
-              onPress={() => router.push('/settings/ai')}
+              // Route created in Phase 6 — show coming-soon for now
+              onPress={() => router.push('/profile' as never)}
             />
           </View>
         </AppCard>

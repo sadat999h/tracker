@@ -1,10 +1,10 @@
-import { eq, isNull } from 'drizzle-orm';
+import { and, eq, isNull } from 'drizzle-orm';
 import { getDb } from '@/db/client';
 import { entries, metricDefs } from '@/db/schema';
+import { uuid } from '@/lib/ids';
 
 export async function getMetricHistory(metricKey: string) {
   const db = getDb();
-  const { and } = await import('drizzle-orm');
   const [def] = await db
     .select()
     .from(metricDefs)
@@ -16,6 +16,7 @@ export async function getMetricHistory(metricKey: string) {
     .where(and(eq(entries.metricId, def.id), isNull(entries.deletedAt)));
 }
 
+/** Soft-delete an entry (sets deleted_at). User data is never hard-deleted. */
 export async function softDeleteEntry(entryId: string) {
   const db = getDb();
   await db
@@ -24,7 +25,5 @@ export async function softDeleteEntry(entryId: string) {
     .where(eq(entries.id, entryId));
 }
 
-/** @deprecated Use softDeleteEntry. Hard delete is only for dev tooling. */
-export async function deleteEntry(entryId: string) {
-  return softDeleteEntry(entryId);
-}
+/** @deprecated Use softDeleteEntry. */
+export const deleteEntry = softDeleteEntry;

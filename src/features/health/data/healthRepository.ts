@@ -1,14 +1,12 @@
-import { eq, isNull } from 'drizzle-orm';
+import { and, eq, isNull } from 'drizzle-orm';
 import { getDb } from '@/db/client';
 import {
   entries,
   habitLogs,
   habits,
-  medicationLogs,
   medications,
+  medicationLogs,
   profiles,
-  settings,
-  targets,
 } from '@/db/schema';
 import { getLocalDateString } from '@/lib/dates';
 import { uuid } from '@/lib/ids';
@@ -23,26 +21,20 @@ export async function getProfile() {
   return profile ?? null;
 }
 
+/** Sum water entries for today only, filtering by the well-known metric id. */
 export async function getWaterToday(day = getLocalDateString()): Promise<number> {
   const db = getDb();
-  // Only sum entries for the water metric (md_water), not all entries for the day
   const rows = await db
     .select({ valueNum: entries.valueNum })
     .from(entries)
-    .where(eq(entries.metricId, 'md_water'))
-    // also filter by day
-    ;
-  const dayRows = rows.filter((r) => {
-    // We need to re-query with day filter — do it properly
-    return true; // placeholder; real filter below
-  });
-  // Re-query properly with both conditions
-  const { and } = await import('drizzle-orm');
-  const dayEntries = await db
-    .select({ valueNum: entries.valueNum })
-    .from(entries)
-    .where(and(eq(entries.metricId, 'md_water'), eq(entries.day, day), isNull(entries.deletedAt)));
-  return dayEntries.reduce((sum, e) => sum + (e.valueNum ?? 0), 0);
+    .where(
+      and(
+        eq(entries.metricId, 'md_water'),
+        eq(entries.day, day),
+        isNull(entries.deletedAt),
+      ),
+    );
+  return rows.reduce((sum, e) => sum + (e.valueNum ?? 0), 0);
 }
 
 export async function logWaterEntry(amountMl: number, day = getLocalDateString()) {
@@ -59,7 +51,6 @@ export async function logWaterEntry(amountMl: number, day = getLocalDateString()
 
 export async function getHabitsForToday(day = getLocalDateString()) {
   const db = getDb();
-  const { and } = await import('drizzle-orm');
   const activeHabits = await db
     .select()
     .from(habits)
@@ -76,6 +67,8 @@ export async function getHabitsForToday(day = getLocalDateString()) {
   }));
 }
 
+export type HabitWithLog = Awaited<ReturnType<typeof getHabitsForToday>>[number];
+
 export async function toggleHabitLog(
   habitId: string,
   done: boolean,
@@ -83,11 +76,16 @@ export async function toggleHabitLog(
   day = getLocalDateString(),
 ) {
   const db = getDb();
-  const { and } = await import('drizzle-orm');
   const [existing] = await db
     .select()
     .from(habitLogs)
-    .where(and(eq(habitLogs.habitId, habitId), eq(habitLogs.day, day), isNull(habitLogs.deletedAt)));
+    .where(
+      and(
+        eq(habitLogs.habitId, habitId),
+        eq(habitLogs.day, day),
+        isNull(habitLogs.deletedAt),
+      ),
+    );
 
   if (existing) {
     await db
@@ -108,7 +106,6 @@ export async function toggleHabitLog(
 
 export async function getMedications() {
   const db = getDb();
-  const { and } = await import('drizzle-orm');
   return db
     .select()
     .from(medications)
