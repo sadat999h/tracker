@@ -10,6 +10,14 @@ const tabs = [
   { name: 'profile',   title: 'Profile',   icon: 'account-outline' as const,       active: 'account' as const },
 ] as const;
 
+// RN 0.79 changed NativeColorValue to include null on some platforms, causing a
+// type conflict with @react-navigation/bottom-tabs v7 tint props. The string
+// values we pass are valid at runtime so we widen to unknown here.
+const tabColors = {
+  tabBarActiveTintColor: colors.signal as unknown,
+  tabBarInactiveTintColor: colors.muted as unknown,
+};
+
 export default function TabLayout() {
   return (
     <Tabs
@@ -21,11 +29,7 @@ export default function TabLayout() {
           backgroundColor: colors.surfaceLow,
           borderTopColor: colors.surfaceHigh,
         },
-        // @ts-expect-error RN 0.79 NativeColorValue union includes null on some platforms;
-        // the string values we pass are valid at runtime.
-        tabBarActiveTintColor: colors.signal,
-        // @ts-expect-error same as above
-        tabBarInactiveTintColor: colors.muted,
+        ...tabColors,
         tabBarLabelStyle: { ...typography.labelSm, fontSize: 10 },
         tabBarItemStyle: { minHeight: 48 },
       }}
