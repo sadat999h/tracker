@@ -10,29 +10,28 @@ const tabs = [
   { name: 'profile',   title: 'Profile',   icon: 'account-outline' as const,       active: 'account' as const },
 ] as const;
 
-// RN 0.79 changed NativeColorValue to include null on some platforms, causing a
-// type conflict with @react-navigation/bottom-tabs v7 tint props. The string
-// values we pass are valid at runtime so we widen to unknown here.
-const tabColors = {
-  tabBarActiveTintColor: colors.signal as unknown,
-  tabBarInactiveTintColor: colors.muted as unknown,
-};
-
 export default function TabLayout() {
   return (
     <Tabs
-      screenOptions={{
-        headerShown: false,
-        tabBarStyle: {
-          height: 72,
-          paddingTop: 8,
-          backgroundColor: colors.surfaceLow,
-          borderTopColor: colors.surfaceHigh,
-        },
-        ...tabColors,
-        tabBarLabelStyle: { ...typography.labelSm, fontSize: 10 },
-        tabBarItemStyle: { minHeight: 48 },
-      }}
+      screenOptions={
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        {
+          headerShown: false,
+          tabBarStyle: {
+            height: 72,
+            paddingTop: 8,
+            backgroundColor: colors.surfaceLow,
+            borderTopColor: colors.surfaceHigh,
+          },
+          // RN 0.79 changed NativeColorValue to include null on some platforms,
+          // which conflicts with @react-navigation/bottom-tabs v7's string-only
+          // tint prop types. The values are valid strings at runtime.
+          tabBarActiveTintColor: colors.signal as any, // eslint-disable-line @typescript-eslint/no-explicit-any
+          tabBarInactiveTintColor: colors.muted as any, // eslint-disable-line @typescript-eslint/no-explicit-any
+          tabBarLabelStyle: { ...typography.labelSm, fontSize: 10 },
+          tabBarItemStyle: { minHeight: 48 },
+        }
+      }
     >
       {tabs.map((tab) => (
         <Tabs.Screen
