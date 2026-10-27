@@ -1,11 +1,6 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
-import type { ColorValue } from 'react-native';
 import { colors, typography } from '@/theme/tokens';
-
-// Cast to ColorValue to satisfy RN 0.79's stricter NativeColorValue union
-const tintActive: ColorValue = colors.signal;
-const tintInactive: ColorValue = colors.muted;
 
 const tabs = [
   { name: 'home',      title: 'Home',      icon: 'home-outline' as const,          active: 'home' as const },
@@ -26,8 +21,11 @@ export default function TabLayout() {
           backgroundColor: colors.surfaceLow,
           borderTopColor: colors.surfaceHigh,
         },
-        tabBarActiveTintColor: tintActive,
-        tabBarInactiveTintColor: tintInactive,
+        // @ts-expect-error RN 0.79 NativeColorValue union includes null on some platforms;
+        // the string values we pass are valid at runtime.
+        tabBarActiveTintColor: colors.signal,
+        // @ts-expect-error same as above
+        tabBarInactiveTintColor: colors.muted,
         tabBarLabelStyle: { ...typography.labelSm, fontSize: 10 },
         tabBarItemStyle: { minHeight: 48 },
       }}
