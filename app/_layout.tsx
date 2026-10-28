@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useRouter } from 'expo-router';
+import { useRouter, Stack } from 'expo-router';
 import { eq } from 'drizzle-orm';
-import { Stack } from 'expo-router';
 import {
   Inter_400Regular,
   Inter_600SemiBold,

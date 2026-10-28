@@ -1,7 +1,7 @@
-import { ScrollView, Text, View, Pressable, Alert, StyleSheet } from 'react-native';
+import { ScrollView, Text, View, Alert, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
-import { AppCard, Button, TelemetryLabel, Toggle } from '@/components';
+import { AppCard, Button, TelemetryLabel } from '@/components';
 import { colors, spacing, typography } from '@/theme/tokens';
 import { useHealthDashboard } from '@/features/health/hooks/useHealthDashboard';
 

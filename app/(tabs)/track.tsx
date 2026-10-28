@@ -10,7 +10,7 @@ import { logWaterEntry, toggleHabitLog } from '@/features/health/data/healthRepo
 export default function TrackScreen() {
   const { loading, profile, waterMl, habits, refresh } = useHealthDashboard();
   const [category, setCategory] = useState('Health');
-  const [focusMin, setFocusMin] = useState('45');
+  const [focusMin] = useState('45');
   const [deliverable, setDeliverable] = useState('');
   const [diverts, setDiverts] = useState(0);
   const [logging, setLogging] = useState(false);

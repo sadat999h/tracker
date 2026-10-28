@@ -35,7 +35,7 @@ export default function AssistantScreen() {
           </Text>
           <Text style={[typography.bodySm, { color: colors.muted, marginTop: spacing.sm }]}>
             Free-tier Gemini API data may be used by Google to improve its
-            products. Check Google AI Studio's terms for the current policy.
+            products. Check Google AI Studio&apos;s terms for the current policy.
           </Text>
         </AppCard>
 

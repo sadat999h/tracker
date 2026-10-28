@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { View, Text, Pressable, StyleSheet, ActivityIndicator } from 'react-native';
 import { runBootstrap } from '@/db/bootstrap';
 import { colors, typography, spacing, radii } from '@/theme/tokens';
@@ -26,7 +26,7 @@ interface Props {
 export function Bootstrap({ children, onReady }: Props) {
   const [state, setState] = useState<BootstrapState>({ status: 'loading' });
 
-  const run = () => {
+  const run = useCallback(() => {
     setState({ status: 'loading' });
     runBootstrap()
       .then(() => {
@@ -38,11 +38,11 @@ export function Bootstrap({ children, onReady }: Props) {
           err instanceof Error ? err.message : 'Unknown error during database init';
         setState({ status: 'error', message });
       });
-  };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps -- run is stable; onReady intentionally not a dep
 
   useEffect(() => {
     run();
-  }, []);
+  }, [run]);
 
   if (state.status === 'loading') {
     return (
@@ -56,7 +56,7 @@ export function Bootstrap({ children, onReady }: Props) {
   if (state.status === 'error') {
     return (
       <View style={styles.center}>
-        <Text style={[typography.headlineSm, styles.errorTitle]}>Couldn't open your data</Text>
+        <Text style={[typography.headlineSm, styles.errorTitle]}>Couldn&apos;t open your data</Text>
         <Text style={[typography.bodyMd, styles.errorBody]}>{state.message}</Text>
         <Pressable
           onPress={run}
@@ -68,7 +68,7 @@ export function Bootstrap({ children, onReady }: Props) {
         </Pressable>
         <Text style={[typography.bodySm, styles.hint]}>
           If this keeps happening, you may need to reinstall the app.{'\n'}
-          Your data cannot be recovered without the original device's keystore.
+          Your data cannot be recovered without the original device&apos;s keystore.
         </Text>
       </View>
     );

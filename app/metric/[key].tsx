@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { AppCard, Button, TelemetryLabel } from '@/components';
@@ -10,15 +10,15 @@ export default function MetricHistoryScreen() {
   const [entriesList, setEntriesList] = useState<Awaited<ReturnType<typeof getMetricHistory>>>([]);
   const [loading, setLoading] = useState(true);
 
-  const load = async () => {
+  const load = useCallback(async () => {
     if (!key) return;
     setLoading(true);
     const data = await getMetricHistory(key);
     setEntriesList(data);
     setLoading(false);
-  };
+  }, [key]);
 
-  useEffect(() => { void load(); }, [key]);
+  useEffect(() => { void load(); }, [load]);
 
   return <View style={{ flex: 1, backgroundColor: colors.canvas, padding: spacing.md }}>
     <TelemetryLabel>Telemetry Metric History</TelemetryLabel>

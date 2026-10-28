@@ -3,11 +3,10 @@ import { Modal, Pressable, ScrollView, Text, View, StyleSheet } from 'react-nati
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { AppCard, Button, Checkbox, MetricTile, ProgressBar, Ring, TelemetryLabel } from '@/components';
+import { AppCard, Checkbox, MetricTile, ProgressBar, Ring, TelemetryLabel } from '@/components';
 import { colors, radii, spacing, typography } from '@/theme/tokens';
 import { useHealthDashboard } from '@/features/health/hooks/useHealthDashboard';
 import { calculateConsistency } from '@/lib/scoring';
-import { getLocalDateString } from '@/lib/dates';
 import { logWaterEntry, toggleHabitLog } from '@/features/health/data/healthRepository';
 
 export function HomeScreen() {

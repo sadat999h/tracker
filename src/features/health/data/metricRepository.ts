@@ -1,7 +1,6 @@
 import { and, eq, isNull } from 'drizzle-orm';
 import { getDb } from '@/db/client';
 import { entries, metricDefs } from '@/db/schema';
-import { uuid } from '@/lib/ids';
 
 export async function getMetricHistory(metricKey: string) {
   const db = getDb();
