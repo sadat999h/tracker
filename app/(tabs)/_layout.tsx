@@ -10,36 +10,41 @@ const tabs = [
   { name: 'profile',   title: 'Profile',   icon: 'account-outline' as const,      active: 'account' as const },
 ] as const;
 
+// RN 0.79 changed NativeColorValue to a platform union that includes null,
+// causing a type conflict with @react-navigation/bottom-tabs v7 tint props.
+// The values are valid hex strings at runtime. Cast the whole object to skip
+// the internal type check rather than fighting individual props.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const screenOptions: any = {
+  headerShown: false,
+  tabBarStyle: {
+    height: 72,
+    paddingTop: 8,
+    backgroundColor: colors.surfaceLow,
+    borderTopColor: colors.surfaceHigh,
+  },
+  tabBarActiveTintColor: colors.signal,
+  tabBarInactiveTintColor: colors.muted,
+  tabBarLabelStyle: { ...typography.labelSm, fontSize: 10 },
+  tabBarItemStyle: { minHeight: 48 },
+};
+
 export default function TabLayout() {
   return (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- RN 0.79 NativeColorValue includes null,
-    // incompatible with @react-navigation/bottom-tabs v7 tint props; values are valid strings at runtime.
-    <Tabs screenOptions={{
-      headerShown: false,
-      tabBarStyle: {
-        height: 72,
-        paddingTop: 8,
-        backgroundColor: colors.surfaceLow,
-        borderTopColor: colors.surfaceHigh,
-      },
-      tabBarActiveTintColor: colors.signal as never,
-      tabBarInactiveTintColor: colors.muted as never,
-      tabBarLabelStyle: { ...typography.labelSm, fontSize: 10 },
-      tabBarItemStyle: { minHeight: 48 },
-    }}>
+    <Tabs screenOptions={screenOptions}>
       {tabs.map((tab) => (
         <Tabs.Screen
           key={tab.name}
           name={tab.name}
           options={{
             title: tab.title,
-            tabBarIcon: ({ color, focused }) => (
-              <MaterialCommunityIcons
-                name={focused ? tab.active : tab.icon}
-                color={color}
-                size={21}
-              />
-            ),
+tabBarIcon: ({ color, focused }) => (
+  <MaterialCommunityIcons
+    name={focused ? tab.active : tab.icon}
+    color={typeof color === 'string' ? color : colors.muted}
+    size={21}
+  />
+),
           }}
         />
       ))}

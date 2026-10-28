@@ -1,94 +1,319 @@
 import { useState } from 'react';
-import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
+import { Modal, Pressable, ScrollView, Text, View, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
-import { AppCard, Button, Checkbox, Chip, MetricTile, ProgressBar, Ring, TelemetryLabel } from '@/components';
-import { colors, cardBorder, radii, spacing, typography } from '@/theme/tokens';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AppCard, Button, Checkbox, MetricTile, ProgressBar, Ring, TelemetryLabel } from '@/components';
+import { colors, radii, spacing, typography } from '@/theme/tokens';
 import { useHealthDashboard } from '@/features/health/hooks/useHealthDashboard';
 import { calculateConsistency } from '@/lib/scoring';
+import { getLocalDateString } from '@/lib/dates';
 import { logWaterEntry, toggleHabitLog } from '@/features/health/data/healthRepository';
 
 export function HomeScreen() {
   const router = useRouter();
-  const { loading, profile, waterMl, habits, meds, refresh } = useHealthDashboard();
+  const { loading, profile, waterMl, habits, refresh } = useHealthDashboard();
   const [quickAddOpen, setQuickAddOpen] = useState(false);
 
-  if (loading || !profile) {
-    return <View style={{ flex: 1, backgroundColor: colors.canvas, justifyContent: 'center', alignItems: 'center' }}><Text style={[typography.bodyMd, { color: colors.muted }]}>Loading DAYMARK telemetry...</Text></View>;
+  // Real today date — never hardcoded
+  const today = new Date();
+  const dayLabel = today.toLocaleDateString('en-US', {
+    weekday: 'long', month: 'short', day: 'numeric',
+  });
+
+  if (loading) {
+    return (
+      <SafeAreaView style={styles.container} edges={['top']}>
+        <View style={styles.center}>
+          <Text style={[typography.bodyMd, { color: colors.muted }]}>Loading…</Text>
+        </View>
+      </SafeAreaView>
+    );
   }
 
+  if (!profile) {
+    return (
+      <SafeAreaView style={styles.container} edges={['top']}>
+        <View style={styles.center}>
+          <Text style={[typography.bodyMd, { color: colors.muted }]}>
+            Complete setup to get started.
+          </Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  const waterTarget = 2500;
   const completedHabits = habits.filter((h) => h.log?.done).length;
-  const totalTriggers = habits.length + 2; // Water + Meds + habits
-  const completedTriggers = (waterMl >= 3000 ? 1 : waterMl > 0 ? 0.5 : 0) + completedHabits + (meds.length > 0 ? 1 : 0);
-  const consistency = calculateConsistency(completedTriggers, totalTriggers);
+  const totalItems = habits.length + 1; // habits + water
+  const completedItems = (waterMl >= waterTarget ? 1 : 0) + completedHabits;
+  const consistency = calculateConsistency(completedItems, totalItems);
 
-  return <View style={{ flex: 1, backgroundColor: colors.canvas }}>
-    <ScrollView contentContainerStyle={{ padding: spacing.md, paddingBottom: 116, gap: spacing.lg }} showsVerticalScrollIndicator={false}>
-      {/* Greeting & Header */}
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-        <View><Text style={[typography.headlineLg, { color: colors.ink }]}>Good morning, {profile.name}</Text><Text style={[typography.labelSm, { color: colors.muted, marginTop: 2 }]}>Thursday, Oct 24 • Day 184 of 2024</Text></View>
-        <View style={{ flexDirection: 'row', gap: spacing.sm }}>
-          <Pressable accessibilityLabel="Notifications" style={{ width: 40, height: 40, borderRadius: radii.full, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center' }}><Text style={{ color: colors.signalSoft }}>♧</Text></Pressable>
-          <View style={{ width: 40, height: 40, borderRadius: radii.full, backgroundColor: colors.surfaceHigh, alignItems: 'center', justifyContent: 'center' }}><Text style={[typography.labelLg, { color: colors.signalSoft }]}>{profile.name.charAt(0).toUpperCase()}</Text></View>
-        </View>
-      </View>
-
-      {/* Today at a Glance Card */}
-      <AppCard style={{ padding: 20 }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: spacing.md }}>
-          <View style={{ flexDirection: 'row', gap: spacing.sm, alignItems: 'center' }}><TelemetryLabel>Today at a glance</TelemetryLabel><Chip label="CYCLE #42" /></View>
-          <View style={{ flexDirection: 'row', gap: 6, alignItems: 'center', borderRadius: radii.full, paddingHorizontal: 10, paddingVertical: 6, backgroundColor: colors.surfaceHighest }}><Text style={{ color: colors.signal }}>♨</Text><Text style={[typography.labelMd, { color: colors.signalSoft }]}>24 Day Streak</Text></View>
-        </View>
-        <View style={{ flexDirection: 'row', gap: 20, alignItems: 'center' }}>
-          <Ring value={completedTriggers} total={totalTriggers} label={String(consistency)} caption="%" />
-          <View style={{ flex: 1, gap: spacing.sm }}>
-            <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 5 }}><Text style={[typography.displayMd, { color: colors.ink }]}>{Math.round(completedTriggers)}</Text><Text style={[typography.bodyMd, { color: colors.muted }]}>/ {totalTriggers} planned triggers</Text></View>
-            <Text style={[typography.bodySm, { color: colors.mutedWarm }]}>High cognitive endurance. Active telemetry synchronized.</Text>
-            <ProgressBar value={consistency / 100} />
+  return (
+    <SafeAreaView style={styles.container} edges={['top']}>
+      <ScrollView
+        contentContainerStyle={styles.scroll}
+        showsVerticalScrollIndicator={false}
+      >
+        {/* Header */}
+        <View style={styles.headerRow}>
+          <View>
+            <Text style={[typography.headlineLg, { color: colors.ink }]}>
+              {profile.name}
+            </Text>
+            <Text style={[typography.labelSm, { color: colors.muted, marginTop: 2 }]}>
+              {dayLabel}
+            </Text>
+          </View>
+          <View style={styles.avatar}>
+            <Text style={[typography.labelLg, { color: colors.signalSoft }]}>
+              {profile.name.charAt(0).toUpperCase()}
+            </Text>
           </View>
         </View>
-      </AppCard>
 
-      {/* Telemetry Sequence */}
-      <View style={{ gap: spacing.sm }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}><TelemetryLabel>Telemetry sequence</TelemetryLabel><Text style={[typography.labelSm, { color: colors.signal }]}>● Live Sequence</Text></View>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: spacing.sm }}>
-          {[{ time: '07:30', title: 'Hydration Primer', detail: `${waterMl}ml logged` }, { time: '12:00', title: 'Active Health Vault', detail: 'Encrypted SQLite' }].map((item) => <View key={item.time} style={[{ width: 144, padding: 12, borderRadius: 12, backgroundColor: colors.surface }, cardBorder]}><Text style={[typography.labelSm, { color: colors.ink }]}>{item.time}</Text><Text numberOfLines={1} style={[typography.labelMd, { color: colors.ink, marginTop: 8 }]}>{item.title}</Text><Text numberOfLines={1} style={[typography.labelSm, { color: colors.muted, marginTop: 4 }]}>{item.detail}</Text></View>)}
-        </ScrollView>
-      </View>
-
-      {/* Real-time Metrics Grid */}
-      <View style={{ gap: spacing.gutter }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}><TelemetryLabel>Real-time metrics</TelemetryLabel><Text style={[typography.labelSm, { color: colors.muted }]}>Target Cadence</Text></View>
-        <View style={{ flexDirection: 'row', gap: spacing.gutter }}>
-          <Pressable style={{ flex: 1 }} onPress={() => router.push('/metric/hydration')}><MetricTile label="Water" value={waterMl.toLocaleString()} unit="/ 3,000 ml" detail="Tap for history" progress={Math.min(waterMl / 3000, 1)} icon="♢" /></Pressable>
-          <MetricTile label="Medication" value={`${meds.filter((m) => m.active).length} active`} detail="Adherence tracked" icon="•" />
-        </View>
-      </View>
-
-      {/* Habit Architecture Card */}
-      <AppCard style={{ padding: 20 }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: spacing.sm }}>
-          <TelemetryLabel>Habit Architecture</TelemetryLabel>
-          <Text style={[typography.labelSm, { color: colors.signalSoft }]}>{completedHabits} / {habits.length} completed</Text>
-        </View>
-        {habits.length === 0 ? <Text style={[typography.bodyMd, { color: colors.muted }]}>No habits configured.</Text> : habits.map(({ habit, log }) => <View key={habit.id} style={{ flexDirection: 'row', alignItems: 'center', gap: spacing.gutter, paddingVertical: 10 }}><Checkbox checked={log?.done ?? false} onPress={async () => { await toggleHabitLog(habit.id, !(log?.done ?? false)); await refresh(); }} /><View style={{ flex: 1 }}><Text style={[typography.bodyMd, { color: colors.ink }]}>{habit.name}</Text><Text style={[typography.labelSm, { color: colors.muted, marginTop: 2 }]}>{habit.subtitle ?? 'Daily cadence'}</Text></View><Text style={[typography.labelSm, { color: log?.done ? colors.signalSoft : colors.muted, paddingHorizontal: 8, paddingVertical: 4, borderRadius: 4, backgroundColor: colors.surfaceHigh }]}>{log?.done ? 'DONE' : 'PENDING'}</Text></View>)}
-      </AppCard>
-    </ScrollView>
-
-    {/* Floating Action Button */}
-    <Pressable accessibilityLabel="Quick add telemetry" onPress={() => setQuickAddOpen(true)} style={{ position: 'absolute', right: spacing.md, bottom: 28, width: 56, height: 56, borderRadius: radii.full, backgroundColor: colors.signal, alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 30, color: colors.signalDark }}>+</Text></Pressable>
-
-    {/* Quick Input Modal */}
-    <Modal animationType="slide" transparent visible={quickAddOpen} onRequestClose={() => setQuickAddOpen(false)}>
-      <Pressable onPress={() => setQuickAddOpen(false)} style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: '#00000099' }}>
-        <Pressable style={{ backgroundColor: colors.surfaceHigh, borderTopLeftRadius: radii.sheet, borderTopRightRadius: radii.sheet, padding: 20, gap: spacing.gutter }}>
-          <TelemetryLabel>Quick telemetry input</TelemetryLabel>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-            <Pressable onPress={async () => { await logWaterEntry(250); await refresh(); setQuickAddOpen(false); }} style={{ alignItems: 'center', gap: 6 }}><View style={{ width: 44, height: 44, borderRadius: radii.control, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.surface }}><Text style={{ color: colors.signal }}>+</Text></View><Text style={[typography.labelSm, { color: colors.ink }]}>+250ml Water</Text></Pressable>
-            <Pressable onPress={() => { router.push('/(tabs)/track'); setQuickAddOpen(false); }} style={{ alignItems: 'center', gap: 6 }}><View style={{ width: 44, height: 44, borderRadius: radii.control, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.surface }}><Text style={{ color: colors.signal }}>⚙</Text></View><Text style={[typography.labelSm, { color: colors.ink }]}>Track Tab</Text></Pressable>
+        {/* Today at a glance */}
+        <AppCard style={styles.glanceCard}>
+          <TelemetryLabel>Today at a glance</TelemetryLabel>
+          <View style={styles.ringRow}>
+            <Ring
+              value={completedItems}
+              total={totalItems}
+              label={String(consistency)}
+              caption="%"
+            />
+            <View style={{ flex: 1, gap: spacing.sm }}>
+              <Text style={[typography.headlineMd, { color: colors.ink }]}>
+                {completedItems} / {totalItems}
+              </Text>
+              <Text style={[typography.bodyMd, { color: colors.muted }]}>
+                {completedItems === totalItems
+                  ? 'All done for today.'
+                  : `${totalItems - completedItems} item${totalItems - completedItems !== 1 ? 's' : ''} remaining`}
+              </Text>
+              <ProgressBar value={consistency / 100} />
+            </View>
           </View>
-        </Pressable>
+        </AppCard>
+
+        {/* Metrics grid */}
+        <View style={styles.metricsGrid}>
+          <Pressable
+            style={{ flex: 1 }}
+            onPress={() => router.push('/metric/water' as never)}
+            accessibilityRole="button"
+            accessibilityLabel="View water history"
+          >
+            <MetricTile
+              label="Water"
+              value={waterMl.toLocaleString()}
+              unit={`/ ${waterTarget.toLocaleString()} ml`}
+              progress={Math.min(waterMl / waterTarget, 1)}
+            />
+          </Pressable>
+          <MetricTile
+            label="Habits"
+            value={`${completedHabits}`}
+            unit={`/ ${habits.length}`}
+            detail={habits.length === 0 ? 'None set up yet' : undefined}
+            progress={habits.length > 0 ? completedHabits / habits.length : 0}
+          />
+        </View>
+
+        {/* Habits */}
+        {habits.length > 0 && (
+          <AppCard>
+            <View style={styles.habitHeader}>
+              <TelemetryLabel>Habits</TelemetryLabel>
+              <Text style={[typography.labelSm, { color: colors.signalSoft }]}>
+                {completedHabits} / {habits.length}
+              </Text>
+            </View>
+            {habits.map(({ habit, log }) => (
+              <View key={habit.id} style={styles.habitRow}>
+                <Checkbox
+                  checked={log?.done ?? false}
+                  onPress={async () => {
+                    await toggleHabitLog(habit.id, !(log?.done ?? false));
+                    await refresh();
+                  }}
+                />
+                <View style={{ flex: 1 }}>
+                  <Text style={[typography.bodyMd, { color: colors.ink }]}>
+                    {habit.name}
+                  </Text>
+                  {habit.subtitle ? (
+                    <Text style={[typography.labelSm, { color: colors.muted, marginTop: 2 }]}>
+                      {habit.subtitle}
+                    </Text>
+                  ) : null}
+                </View>
+                <Text
+                  style={[
+                    typography.labelSm,
+                    {
+                      color: log?.done ? colors.signalSoft : colors.muted,
+                      paddingHorizontal: 8,
+                      paddingVertical: 4,
+                      borderRadius: 4,
+                      backgroundColor: colors.surfaceHigh,
+                    },
+                  ]}
+                >
+                  {log?.done ? 'Done' : 'Pending'}
+                </Text>
+              </View>
+            ))}
+          </AppCard>
+        )}
+
+        {habits.length === 0 && (
+          <AppCard>
+            <TelemetryLabel>Habits</TelemetryLabel>
+            <Text style={[typography.bodyMd, { color: colors.muted, marginTop: spacing.sm }]}>
+              No habits set up yet. Habit creation is coming in a future update.
+            </Text>
+          </AppCard>
+        )}
+      </ScrollView>
+
+      {/* FAB — quick add water */}
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel="Quick add water"
+        onPress={() => setQuickAddOpen(true)}
+        style={styles.fab}
+      >
+        <MaterialCommunityIcons name="plus" size={28} color={colors.signalDark} />
       </Pressable>
-    </Modal>
-  </View>;
+
+      {/* Quick add sheet */}
+      <Modal
+        animationType="slide"
+        transparent
+        visible={quickAddOpen}
+        onRequestClose={() => setQuickAddOpen(false)}
+      >
+        <Pressable
+          style={styles.modalBackdrop}
+          onPress={() => setQuickAddOpen(false)}
+          accessibilityLabel="Close quick add"
+        >
+          <Pressable style={styles.sheet} onPress={() => { /* prevent close */ }}>
+            <TelemetryLabel>Quick add</TelemetryLabel>
+            <View style={styles.quickRow}>
+              <Pressable
+                style={styles.quickItem}
+                onPress={async () => {
+                  await logWaterEntry(250);
+                  await refresh();
+                  setQuickAddOpen(false);
+                }}
+                accessibilityRole="button"
+                accessibilityLabel="Log 250 ml water"
+              >
+                <MaterialCommunityIcons name="water" size={24} color={colors.signal} />
+                <Text style={[typography.labelSm, { color: colors.ink }]}>+250 ml</Text>
+              </Pressable>
+              <Pressable
+                style={styles.quickItem}
+                onPress={async () => {
+                  await logWaterEntry(500);
+                  await refresh();
+                  setQuickAddOpen(false);
+                }}
+                accessibilityRole="button"
+                accessibilityLabel="Log 500 ml water"
+              >
+                <MaterialCommunityIcons name="water" size={24} color={colors.signal} />
+                <Text style={[typography.labelSm, { color: colors.ink }]}>+500 ml</Text>
+              </Pressable>
+              <Pressable
+                style={styles.quickItem}
+                onPress={() => {
+                  router.push('/(tabs)/track' as never);
+                  setQuickAddOpen(false);
+                }}
+                accessibilityRole="button"
+                accessibilityLabel="Go to Track tab"
+              >
+                <MaterialCommunityIcons name="record-circle-outline" size={24} color={colors.signal} />
+                <Text style={[typography.labelSm, { color: colors.ink }]}>Track</Text>
+              </Pressable>
+            </View>
+          </Pressable>
+        </Pressable>
+      </Modal>
+    </SafeAreaView>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: colors.canvas },
+  center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+  scroll: { padding: spacing.md, paddingBottom: 100, gap: spacing.md },
+  headerRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  avatar: {
+    width: 40,
+    height: 40,
+    borderRadius: radii.full,
+    backgroundColor: colors.surfaceHigh,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  glanceCard: { gap: spacing.md },
+  ringRow: { flexDirection: 'row', gap: spacing.lg, alignItems: 'center' },
+  metricsGrid: { flexDirection: 'row', gap: spacing.sm },
+  habitHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: spacing.sm,
+  },
+  habitRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    paddingVertical: spacing.sm,
+  },
+  fab: {
+    position: 'absolute',
+    right: spacing.md,
+    bottom: 28,
+    width: 56,
+    height: 56,
+    borderRadius: radii.full,
+    backgroundColor: colors.signal,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalBackdrop: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    backgroundColor: '#00000099',
+  },
+  sheet: {
+    backgroundColor: colors.surfaceHigh,
+    borderTopLeftRadius: radii.sheet ?? 24,
+    borderTopRightRadius: radii.sheet ?? 24,
+    padding: spacing.lg,
+    gap: spacing.md,
+  },
+  quickRow: {
+    flexDirection: 'row',
+    gap: spacing.md,
+    justifyContent: 'flex-start',
+  },
+  quickItem: {
+    alignItems: 'center',
+    gap: 6,
+    padding: spacing.sm,
+    borderRadius: radii.control,
+    backgroundColor: colors.surface,
+    minWidth: 72,
+  },
+});
